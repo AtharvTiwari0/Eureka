@@ -171,28 +171,39 @@ export default function BookCallModal({ isOpen, onClose, preselectedBatch }) {
             </div>
 
             {/* Calendar Date Selector */}
-            <label style={labelStyle}><CalendarIcon size={15} color="var(--primary-blue)" /> Select Date</label>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.4rem' }}>
+              <label style={labelStyle}><CalendarIcon size={15} color="var(--primary-blue)" /> Select Date</label>
+              <span className="clay-badge" style={{ fontSize: '0.7rem', padding: '0.15rem 0.55rem', background: 'var(--primary-blue-soft)', color: 'var(--primary-blue)' }}>
+                {selectedDate}
+              </span>
+            </div>
+            
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.6rem', marginBottom: '1.4rem' }}>
-              {upcomingDates.slice(0, 6).map((d, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  onClick={() => setSelectedDate(d.fullDate)}
-                  style={{
-                    padding: '0.75rem 0.4rem',
-                    borderRadius: '12px',
-                    border: selectedDate === d.fullDate ? '2px solid var(--primary-blue)' : '1px solid var(--border-light)',
-                    background: selectedDate === d.fullDate ? 'var(--primary-blue-soft)' : '#F8FAFC',
-                    cursor: 'pointer',
-                    textAlign: 'center',
-                    transition: 'all 0.2s ease',
-                  }}
-                >
-                  <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', fontWeight: '700', textTransform: 'uppercase' }}>{d.dayName}</div>
-                  <div style={{ fontSize: '1.15rem', fontWeight: '800', color: selectedDate === d.fullDate ? 'var(--primary-blue)' : 'var(--text-primary)' }}>{d.dateNum}</div>
-                  <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>{d.monthName}</div>
-                </button>
-              ))}
+              {upcomingDates.slice(0, 6).map((d, i) => {
+                const isSelected = selectedDate === d.fullDate;
+                return (
+                  <button
+                    key={i}
+                    type="button"
+                    onClick={() => setSelectedDate(d.fullDate)}
+                    style={{
+                      padding: '0.8rem 0.4rem',
+                      borderRadius: '14px',
+                      border: isSelected ? '2px solid var(--primary-blue)' : '1px solid var(--border-light)',
+                      background: isSelected ? 'linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%)' : '#F8FAFC',
+                      boxShadow: isSelected ? '0 4px 12px rgba(37, 99, 235, 0.2)' : 'none',
+                      cursor: 'pointer',
+                      textAlign: 'center',
+                      transition: 'all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                      transform: isSelected ? 'scale(1.03)' : 'scale(1)',
+                    }}
+                  >
+                    <div style={{ fontSize: '0.72rem', color: isSelected ? 'var(--primary-blue)' : 'var(--text-muted)', fontWeight: '800', textTransform: 'uppercase' }}>{d.dayName}</div>
+                    <div style={{ fontSize: '1.2rem', fontWeight: '900', color: isSelected ? 'var(--primary-blue)' : 'var(--text-primary)', margin: '0.1rem 0' }}>{d.dateNum}</div>
+                    <div style={{ fontSize: '0.72rem', color: isSelected ? 'var(--primary-blue)' : 'var(--text-muted)', fontWeight: '600' }}>{d.monthName}</div>
+                  </button>
+                );
+              })}
             </div>
 
             {/* Time Slot Selector */}
