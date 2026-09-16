@@ -74,7 +74,7 @@ export default function Hero({ onBookCallClick }) {
             </div>
 
             {/* Main Action Buttons */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}>
+            <div className="hero-buttons-group" style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}>
               <button
                 onClick={() => onBookCallClick('Class 10th Science Board Special')}
                 className="btn-clay-primary"

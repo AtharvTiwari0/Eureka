@@ -97,10 +97,11 @@ export default function Batches({ onSelectBatch }) {
 
         {/* Interactive Segmented Tab Selector */}
         <div
+          className="batch-tabs-wrapper"
           style={{
             display: 'flex',
             alignItems: 'center',
-            justify: 'center',
+            justifyContent: 'center',
             gap: '0.8rem',
             marginBottom: '2.5rem',
             flexWrap: 'wrap',
@@ -114,6 +115,7 @@ export default function Batches({ onSelectBatch }) {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
+              className="batch-tab-btn"
               style={{
                 padding: '0.9rem 1.6rem',
                 borderRadius: '16px',

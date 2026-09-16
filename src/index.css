@@ -214,3 +214,111 @@ h1, h2, h3, h4, h5, h6 {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary-blue);
 }
+
+/* 
+  =====================================================
+  COMPREHENSIVE MOBILE RESPONSIVE SYSTEM
+  Fixes all compressed/squished card layouts, button groups,
+  and container paddings on mobile viewports (<768px & <480px).
+  =====================================================
+*/
+
+@media (max-width: 868px) {
+  .section-padding {
+    padding: 3rem 0 !important;
+  }
+
+  .container {
+    padding: 0 1rem !important;
+  }
+
+  .clay-card {
+    padding: 1.35rem !important;
+    border-radius: 20px !important;
+  }
+
+  .hero-grid,
+  .teacher-grid,
+  .program-grid,
+  .feedback-grid,
+  .location-grid,
+  .contact-cards-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.8rem !important;
+  }
+
+  .hero-buttons-group,
+  .mobile-stack-buttons {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 0.8rem !important;
+  }
+
+  .hero-buttons-group .btn-clay-primary,
+  .hero-buttons-group .btn-clay-secondary,
+  .mobile-stack-buttons .btn-clay-primary,
+  .mobile-stack-buttons .btn-clay-secondary {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 0.9rem 1.2rem !important;
+    font-size: 0.95rem !important;
+  }
+
+  h1 {
+    font-size: 2.2rem !important;
+    line-height: 1.2 !important;
+  }
+
+  h2 {
+    font-size: 1.75rem !important;
+    line-height: 1.25 !important;
+  }
+
+  h3 {
+    font-size: 1.3rem !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .section-padding {
+    padding: 2.4rem 0 !important;
+  }
+
+  .container {
+    padding: 0 0.85rem !important;
+  }
+
+  .clay-card {
+    padding: 1.15rem !important;
+    border-radius: 18px !important;
+  }
+
+  .btn-clay-primary,
+  .btn-clay-secondary {
+    padding: 0.85rem 1.2rem !important;
+    font-size: 0.92rem !important;
+  }
+
+  .teacher-resume-actions {
+    grid-template-columns: 1fr !important;
+  }
+
+  .batch-tabs-wrapper {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
+  .batch-tab-btn {
+    width: 100% !important;
+    padding: 0.8rem 1rem !important;
+  }
+
+  .modal-overlay {
+    padding: 0.6rem !important;
+  }
+
+  .modal-overlay .clay-card {
+    padding: 1.2rem 1rem !important;
+    max-height: 92vh !important;
+  }
+}
