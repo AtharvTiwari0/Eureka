@@ -8,6 +8,7 @@ import Testimonials from './components/Testimonials';
 import LocationContact from './components/LocationContact';
 import Footer from './components/Footer';
 import BookCallModal from './components/BookCallModal';
+import MobileBottomNav from './components/MobileBottomNav';
 
 export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -38,6 +39,8 @@ export default function App() {
       </main>
 
       <Footer onBookCallClick={handleOpenModal} />
+
+      <MobileBottomNav onBookCallClick={handleOpenModal} />
 
       <BookCallModal
         isOpen={isModalOpen}

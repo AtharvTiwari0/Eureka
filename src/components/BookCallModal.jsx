@@ -300,12 +300,22 @@ export default function BookCallModal({ isOpen, onClose, preselectedBatch }) {
               />
             </div>
 
-            <div style={{ display: 'flex', gap: '0.8rem', marginTop: '0.4rem' }}>
-              <button type="button" onClick={() => setStep(1)} className="btn-clay-secondary" style={{ width: '35%' }}>
+            <div className="modal-step-actions" style={{ display: 'grid', gridTemplateColumns: '0.8fr 1.2fr', gap: '0.8rem', marginTop: '0.6rem' }}>
+              <button
+                type="button"
+                onClick={() => setStep(1)}
+                className="btn-clay-secondary"
+                style={{ padding: '0.85rem 1rem', fontSize: '0.9rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem' }}
+              >
                 <ArrowLeft size={16} /> Back
               </button>
-              <button type="submit" disabled={submitting} className="btn-clay-primary" style={{ width: '65%' }}>
-                <Send size={18} /> {submitting ? 'Confirming...' : 'Confirm & Book Demo'}
+              <button
+                type="submit"
+                disabled={submitting}
+                className="btn-clay-primary"
+                style={{ padding: '0.85rem 1rem', fontSize: '0.9rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem' }}
+              >
+                <Send size={16} /> {submitting ? 'Confirming...' : 'Confirm & Book Demo'}
               </button>
             </div>
           </form>

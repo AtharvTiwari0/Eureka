@@ -179,29 +179,45 @@ export default function AboutTeacher() {
               background: '#FFFFFF',
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem', borderBottom: '1px solid var(--border-light)', paddingBottom: '0.8rem' }}>
-              <div>
-                <h3 style={{ fontSize: '1.3rem', color: 'var(--text-primary)' }}>Abhishek Vishwakarma - Official Resume</h3>
-                <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>Verified Credentials & Certifications</p>
-              </div>
-
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-                <a
-                  href={resumeUrl}
-                  download="Abhishek_Vishwakarma_Resume.jpg"
-                  className="btn-clay-primary"
-                  style={{ padding: '0.4rem 0.9rem', fontSize: '0.82rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}
-                >
-                  <Download size={14} /> Download File
-                </a>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem', marginBottom: '1rem', borderBottom: '1px solid var(--border-light)', paddingBottom: '0.8rem' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '0.5rem' }}>
+                <div>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: 'var(--text-primary)', lineHeight: 1.2 }}>
+                    Abhishek Vishwakarma — Official Resume
+                  </h3>
+                  <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>Verified DU B.Sc & B.Ed Credentials</p>
+                </div>
 
                 <button
                   onClick={() => setShowResumeModal(false)}
-                  style={{ background: 'var(--bg-page)', border: 'none', color: 'var(--text-primary)', width: '36px', height: '36px', borderRadius: '50%', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                  aria-label="Close Resume Modal"
+                  style={{
+                    background: 'var(--primary-blue-soft)',
+                    border: '1px solid rgba(37, 99, 235, 0.2)',
+                    color: 'var(--primary-blue)',
+                    width: '38px',
+                    height: '38px',
+                    borderRadius: '50%',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0,
+                    boxShadow: 'var(--clay-shadow-sm)',
+                  }}
                 >
                   <X size={20} />
                 </button>
               </div>
+
+              <a
+                href={resumeUrl}
+                download="Abhishek_Vishwakarma_Resume.jpg"
+                className="btn-clay-primary"
+                style={{ width: '100%', padding: '0.75rem', fontSize: '0.88rem', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem' }}
+              >
+                <Download size={16} /> Download Full High-Res Resume (.JPG)
+              </a>
             </div>
 
             <img
