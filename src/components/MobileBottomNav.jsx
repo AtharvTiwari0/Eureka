@@ -54,7 +54,7 @@ export default function MobileBottomNav({ onBookCallClick }) {
           style={{ color: 'var(--text-primary)' }}
         >
           <Phone size={18} color="var(--primary-blue)" />
-          <span>Call Center</span>
+          <span>Call</span>
         </a>
 
         <a
