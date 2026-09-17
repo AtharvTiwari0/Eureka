@@ -4,7 +4,8 @@ import confetti from 'canvas-confetti';
 
 export default function BookCallModal({ isOpen, onClose, preselectedBatch }) {
   const [step, setStep] = useState(1);
-  
+  const [selectedBatchName, setSelectedBatchName] = useState(preselectedBatch || 'Class 10th Science Board Special');
+
   const today = new Date();
   const upcomingDates = Array.from({ length: 6 }, (_, i) => {
     const d = new Date();
@@ -26,20 +27,26 @@ export default function BookCallModal({ isOpen, onClose, preselectedBatch }) {
 
   const FORMSPARK_ACTION_URL = 'https://submit-form.com/fQQINef9K';
 
-  const currentBatchName = preselectedBatch || 'Class 10th Science Board Special';
-
+  // Sync preselectedBatch prop whenever modal opens
   useEffect(() => {
-    if (currentBatchName.includes('10th')) {
+    if (preselectedBatch) {
+      setSelectedBatchName(preselectedBatch);
+    }
+    setStep(1);
+  }, [preselectedBatch, isOpen]);
+
+  // Sync slot whenever selectedBatchName changes
+  useEffect(() => {
+    if (selectedBatchName.includes('10th')) {
       setSelectedSlot('4:00 PM - 5:00 PM (Class 10th Science)');
-    } else if (currentBatchName.includes('9th')) {
+    } else if (selectedBatchName.includes('9th')) {
       setSelectedSlot('5:00 PM - 6:00 PM (Class 9th Science)');
-    } else if (currentBatchName.includes('6th') || currentBatchName.includes('8th')) {
+    } else if (selectedBatchName.includes('6th') || selectedBatchName.includes('8th')) {
       setSelectedSlot('3:00 PM - 4:00 PM (Classes 6th - 8th All Subjects)');
     } else {
       setSelectedSlot('4:00 PM - 5:00 PM');
     }
-    setStep(1);
-  }, [preselectedBatch, isOpen]);
+  }, [selectedBatchName]);
 
   if (!isOpen) return null;
 
@@ -59,8 +66,8 @@ export default function BookCallModal({ isOpen, onClose, preselectedBatch }) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
-          _email: { from: studentName, subject: `Demo Class Request for ${currentBatchName}` },
-          batch: currentBatchName,
+          _email: { from: studentName, subject: `Demo Class Request for ${selectedBatchName}` },
+          batch: selectedBatchName,
           date: selectedDate,
           slot: selectedSlot,
           studentName,
@@ -78,7 +85,7 @@ export default function BookCallModal({ isOpen, onClose, preselectedBatch }) {
 
     const text = encodeURIComponent(
       `Hello Abhishek Sir! I want to book 2 Free Demo Classes for Eureka Classes.\n\n` +
-      `🎯 TARGET BATCH: ${currentBatchName}\n` +
+      `🎯 TARGET BATCH: ${selectedBatchName}\n` +
       `📅 Preferred Date: ${selectedDate}\n` +
       `⏰ Preferred Slot: ${selectedSlot}\n` +
       `👤 Student Name: ${studentName}\n` +
@@ -131,43 +138,60 @@ export default function BookCallModal({ isOpen, onClose, preselectedBatch }) {
           <X size={18} />
         </button>
 
-        {/* TARGET BATCH BADGE */}
-        <div
-          style={{
-            padding: '0.8rem 1.1rem',
-            borderRadius: '16px',
-            background: 'var(--primary-blue-soft)',
-            border: '1px solid rgba(37, 99, 235, 0.2)',
-            marginBottom: '1.5rem',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.7rem',
-          }}
-        >
-          <BookOpen size={20} color="var(--primary-blue)" style={{ flexShrink: 0 }} />
-          <div>
-            <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-              Selected Batch:
-            </span>
-            <div style={{ fontSize: '1rem', fontWeight: '800', color: 'var(--primary-blue)' }}>
-              {currentBatchName}
-            </div>
-          </div>
-        </div>
-
-        {/* STEP 1: Select Date & Time Slot */}
+        {/* STEP 1: Select Class Batch, Date & Time Slot */}
         {step === 1 && (
           <div>
             <div style={{ marginBottom: '1.2rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.2rem' }}>
                 <Sparkles size={16} color="var(--accent-amber)" />
                 <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: '700' }}>
-                  Step 1 of 2: Pick Demo Slot
+                  Step 1 of 2: Select Class & Demo Slot
                 </span>
               </div>
               <h3 style={{ fontSize: '1.4rem', fontWeight: '800', color: 'var(--text-primary)' }}>
-                Select Preferred Date & Time
+                Select Class & Preferred Slot
               </h3>
+            </div>
+
+            {/* INTERACTIVE CLASS / BATCH SELECTOR */}
+            <div style={{ marginBottom: '1.3rem' }}>
+              <label style={labelStyle}><BookOpen size={15} color="var(--primary-blue)" /> Select Target Class / Batch</label>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem' }}>
+                {[
+                  { id: 'Class 10th Science Board Special', label: 'Class 10th Science Board Special', timing: '4:00 PM - 5:00 PM' },
+                  { id: 'Class 9th Science Foundation', label: 'Class 9th Science Foundation', timing: '5:00 PM - 6:00 PM' },
+                  { id: 'Classes 6th to 8th All Subjects', label: 'Classes 6th to 8th All Subjects', timing: '3:00 PM - 4:00 PM' },
+                ].map((b) => {
+                  const isSelected = selectedBatchName === b.id || selectedBatchName.includes(b.label.slice(0, 9));
+                  return (
+                    <button
+                      key={b.id}
+                      type="button"
+                      onClick={() => setSelectedBatchName(b.id)}
+                      style={{
+                        padding: '0.7rem 0.9rem',
+                        borderRadius: '12px',
+                        border: isSelected ? '2px solid var(--primary-blue)' : '1px solid var(--border-light)',
+                        background: isSelected ? 'var(--primary-blue-soft)' : '#F8FAFC',
+                        color: isSelected ? 'var(--primary-blue)' : 'var(--text-primary)',
+                        fontWeight: '700',
+                        fontSize: '0.88rem',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        transition: 'all 0.2s ease',
+                      }}
+                    >
+                      <div style={{ textAlign: 'left' }}>
+                        <div style={{ fontWeight: '800' }}>{b.label}</div>
+                        <div style={{ fontSize: '0.72rem', color: isSelected ? 'var(--primary-blue)' : 'var(--text-muted)', opacity: 0.85 }}>{b.timing}</div>
+                      </div>
+                      {isSelected && <CheckCircle2 size={18} color="var(--primary-blue)" />}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
 
             {/* Calendar Date Selector */}
@@ -178,7 +202,7 @@ export default function BookCallModal({ isOpen, onClose, preselectedBatch }) {
               </span>
             </div>
             
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.6rem', marginBottom: '1.4rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.6rem', marginBottom: '1.3rem' }}>
               {upcomingDates.slice(0, 6).map((d, i) => {
                 const isSelected = selectedDate === d.fullDate;
                 return (
@@ -187,7 +211,7 @@ export default function BookCallModal({ isOpen, onClose, preselectedBatch }) {
                     type="button"
                     onClick={() => setSelectedDate(d.fullDate)}
                     style={{
-                      padding: '0.8rem 0.4rem',
+                      padding: '0.75rem 0.4rem',
                       borderRadius: '14px',
                       border: isSelected ? '2px solid var(--primary-blue)' : '1px solid var(--border-light)',
                       background: isSelected ? 'linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%)' : '#F8FAFC',
@@ -199,7 +223,7 @@ export default function BookCallModal({ isOpen, onClose, preselectedBatch }) {
                     }}
                   >
                     <div style={{ fontSize: '0.72rem', color: isSelected ? 'var(--primary-blue)' : 'var(--text-muted)', fontWeight: '800', textTransform: 'uppercase' }}>{d.dayName}</div>
-                    <div style={{ fontSize: '1.2rem', fontWeight: '900', color: isSelected ? 'var(--primary-blue)' : 'var(--text-primary)', margin: '0.1rem 0' }}>{d.dateNum}</div>
+                    <div style={{ fontSize: '1.15rem', fontWeight: '900', color: isSelected ? 'var(--primary-blue)' : 'var(--text-primary)', margin: '0.1rem 0' }}>{d.dateNum}</div>
                     <div style={{ fontSize: '0.72rem', color: isSelected ? 'var(--primary-blue)' : 'var(--text-muted)', fontWeight: '600' }}>{d.monthName}</div>
                   </button>
                 );
@@ -208,10 +232,10 @@ export default function BookCallModal({ isOpen, onClose, preselectedBatch }) {
 
             {/* Time Slot Selector */}
             <label style={labelStyle}><Clock size={15} color="var(--primary-blue)" /> Time Slot</label>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', marginBottom: '1.8rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '1.5rem' }}>
               {[
-                currentBatchName.includes('10th') ? '4:00 PM - 5:00 PM (Class 10th Regular Batch)' :
-                currentBatchName.includes('9th') ? '5:00 PM - 6:00 PM (Class 9th Regular Batch)' :
+                selectedBatchName.includes('10th') ? '4:00 PM - 5:00 PM (Class 10th Regular Batch)' :
+                selectedBatchName.includes('9th') ? '5:00 PM - 6:00 PM (Class 9th Regular Batch)' :
                 '3:00 PM - 4:00 PM (Classes 6th - 8th Regular Batch)',
                 '6:30 PM (Special Counseling Call with Sir)',
               ].map((slot, idx) => (
@@ -220,13 +244,13 @@ export default function BookCallModal({ isOpen, onClose, preselectedBatch }) {
                   type="button"
                   onClick={() => setSelectedSlot(slot)}
                   style={{
-                    padding: '0.8rem 1rem',
+                    padding: '0.75rem 0.9rem',
                     borderRadius: '12px',
                     border: selectedSlot === slot ? '2px solid var(--primary-blue)' : '1px solid var(--border-light)',
                     background: selectedSlot === slot ? 'var(--primary-blue-soft)' : '#F8FAFC',
                     color: selectedSlot === slot ? 'var(--primary-blue)' : 'var(--text-primary)',
                     fontWeight: '700',
-                    fontSize: '0.88rem',
+                    fontSize: '0.85rem',
                     cursor: 'pointer',
                     display: 'flex',
                     alignItems: 'center',
