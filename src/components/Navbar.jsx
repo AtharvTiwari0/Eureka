@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { PhoneCall, Menu, X, BookOpen, User, MapPin, MessageCircle } from 'lucide-react';
 
-export default function Navbar({ onBookCallClick }) {
+export default function Navbar({ activeScreen, onNavigate }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -32,7 +32,10 @@ export default function Navbar({ onBookCallClick }) {
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         
         {/* Brand Logo Image */}
-        <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', textDecoration: 'none' }}>
+        <button
+          onClick={() => onNavigate('home')}
+          style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', textDecoration: 'none', background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', padding: 0 }}
+        >
           <div
             style={{
               width: '46px',
@@ -61,16 +64,16 @@ export default function Navbar({ onBookCallClick }) {
               TORCHBEARER • Science Academy
             </span>
           </div>
-        </a>
+        </button>
 
         {/* Desktop Navigation Links */}
         <nav style={{ display: 'flex', alignItems: 'center', gap: '1.8rem' }} className="desktop-only">
-          <a href="#about" style={navLinkStyle}><User size={16} /> Educator</a>
-          <a href="#batches" style={navLinkStyle}><BookOpen size={16} /> Batches</a>
-          <a href="#feedback" style={navLinkStyle}><MessageCircle size={16} /> Quality Guarantee</a>
-          <a href="#contact" style={navLinkStyle}><MapPin size={16} /> Center Location</a>
+          <button onClick={() => onNavigate('home')} style={getNavStyle(activeScreen === 'home')}><User size={16} /> Home</button>
+          <button onClick={() => onNavigate('batches')} style={getNavStyle(activeScreen === 'batches')}><BookOpen size={16} /> Batches</button>
+          <button onClick={() => onNavigate('teacher')} style={getNavStyle(activeScreen === 'teacher')}><User size={16} /> Educator</button>
+          <button onClick={() => onNavigate('contact')} style={getNavStyle(activeScreen === 'contact')}><MapPin size={16} /> Location</button>
 
-          <button onClick={() => onBookCallClick('Class 10th Science Board Special')} className="btn-clay-primary" style={{ padding: '0.65rem 1.4rem', fontSize: '0.9rem' }}>
+          <button onClick={() => onNavigate('book-demo')} className="btn-clay-primary" style={{ padding: '0.65rem 1.4rem', fontSize: '0.9rem' }}>
             <PhoneCall size={16} /> Book Demo Class
           </button>
         </nav>
@@ -106,23 +109,23 @@ export default function Navbar({ onBookCallClick }) {
             padding: '1.5rem',
             display: 'flex',
             flexDirection: 'column',
-            gap: '1rem',
+            gap: '0.8rem',
             boxShadow: '0 20px 30px rgba(0,0,0,0.1)',
           }}
         >
-          <a href="#about" onClick={() => setMobileMenuOpen(false)} style={mobileNavLinkStyle}>Educator Profile</a>
-          <a href="#batches" onClick={() => setMobileMenuOpen(false)} style={mobileNavLinkStyle}>Batches & Timings</a>
-          <a href="#feedback" onClick={() => setMobileMenuOpen(false)} style={mobileNavLinkStyle}>Quality Guarantee & Feedback</a>
-          <a href="#contact" onClick={() => setMobileMenuOpen(false)} style={mobileNavLinkStyle}>Center Location & Map</a>
+          <button onClick={() => { setMobileMenuOpen(false); onNavigate('home'); }} style={mobileBtnStyle}>Home Screen</button>
+          <button onClick={() => { setMobileMenuOpen(false); onNavigate('batches'); }} style={mobileBtnStyle}>Batches & Timings Screen</button>
+          <button onClick={() => { setMobileMenuOpen(false); onNavigate('teacher'); }} style={mobileBtnStyle}>Educator Profile Screen</button>
+          <button onClick={() => { setMobileMenuOpen(false); onNavigate('contact'); }} style={mobileBtnStyle}>Center Location Screen</button>
           <button
             onClick={() => {
               setMobileMenuOpen(false);
-              onBookCallClick('Class 10th Science Board Special');
+              onNavigate('book-demo');
             }}
             className="btn-clay-primary"
             style={{ width: '100%', marginTop: '0.5rem' }}
           >
-            <PhoneCall size={18} /> Book Demo Class
+            <PhoneCall size={18} /> Book Demo Class Portal
           </button>
         </div>
       )}
@@ -139,6 +142,34 @@ export default function Navbar({ onBookCallClick }) {
     </header>
   );
 }
+
+const getNavStyle = (isActive) => ({
+  color: isActive ? 'var(--primary-blue)' : 'var(--text-secondary)',
+  fontWeight: isActive ? '800' : '600',
+  fontSize: '0.92rem',
+  display: 'flex',
+  alignItems: 'center',
+  gap: '0.4rem',
+  background: 'none',
+  border: 'none',
+  cursor: 'pointer',
+  padding: '0.3rem 0.6rem',
+  borderRadius: '8px',
+  transition: 'all 0.2s ease',
+});
+
+const mobileBtnStyle = {
+  color: 'var(--text-primary)',
+  background: 'none',
+  border: 'none',
+  textAlign: 'left',
+  fontSize: '1.05rem',
+  fontWeight: '600',
+  padding: '0.6rem 0',
+  borderBottom: '1px solid var(--border-light)',
+  cursor: 'pointer',
+};
+
 
 const navLinkStyle = {
   color: 'var(--text-secondary)',

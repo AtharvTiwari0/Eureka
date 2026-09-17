@@ -1,7 +1,7 @@
 import React from 'react';
 import { PhoneCall, Sparkles, Award, GraduationCap, ArrowRight, ShieldCheck, CheckCircle2, Clock, BookOpen } from 'lucide-react';
 
-export default function Hero({ onBookCallClick }) {
+export default function Hero({ onBookCallClick, onExploreBatches }) {
   const coreServices = [
     {
       title: 'Class 10th Science Board Special',
@@ -83,9 +83,13 @@ export default function Hero({ onBookCallClick }) {
                 <PhoneCall size={20} /> Book Free Demo Class
               </button>
               
-              <a href="#batches" className="btn-clay-secondary" style={{ padding: '1.05rem 2rem', fontSize: '1.05rem' }}>
+              <button
+                onClick={onExploreBatches}
+                className="btn-clay-secondary"
+                style={{ padding: '1.05rem 2rem', fontSize: '1.05rem', cursor: 'pointer' }}
+              >
                 View Batches <ArrowRight size={18} />
-              </a>
+              </button>
             </div>
           </div>
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Phone, Mail, MapPin } from 'lucide-react';
 
-export default function Footer({ onBookCallClick }) {
+export default function Footer({ onNavigate }) {
   return (
     <footer
       style={{
@@ -14,7 +14,10 @@ export default function Footer({ onBookCallClick }) {
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1.5rem', marginBottom: '1.8rem' }}>
           
           {/* Brand Logo & Name */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+          <button
+            onClick={() => onNavigate('home')}
+            style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', padding: 0 }}
+          >
             <div
               style={{
                 width: '42px',
@@ -42,23 +45,23 @@ export default function Footer({ onBookCallClick }) {
                 Abhishek Vishwakarma • TORCHBEARER
               </span>
             </div>
-          </div>
+          </button>
 
           {/* Quick Nav Links */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
-            <a href="#about" style={footerLinkStyle}>Educator Profile</a>
-            <a href="#batches" style={footerLinkStyle}>Batches & Timings</a>
-            <a href="#feedback" style={footerLinkStyle}>Quality Guarantee</a>
-            <a href="#contact" style={footerLinkStyle}>Location & Map</a>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem', flexWrap: 'wrap' }}>
+            <button onClick={() => onNavigate('home')} style={footerBtnStyle}>Home Screen</button>
+            <button onClick={() => onNavigate('batches')} style={footerBtnStyle}>Batches & Timings</button>
+            <button onClick={() => onNavigate('teacher')} style={footerBtnStyle}>Educator Profile</button>
+            <button onClick={() => onNavigate('contact')} style={footerBtnStyle}>Location & Map</button>
           </div>
 
           {/* Contact Button */}
           <button
-            onClick={() => onBookCallClick('Class 10th Science Board Special')}
+            onClick={() => onNavigate('book-demo')}
             className="btn-clay-secondary"
             style={{ padding: '0.5rem 1.2rem', fontSize: '0.85rem' }}
           >
-            <Phone size={14} /> Contact +91 9452184870
+            <Phone size={14} /> Book Demo Class Portal
           </button>
         </div>
 
@@ -88,10 +91,14 @@ export default function Footer({ onBookCallClick }) {
   );
 }
 
-const footerLinkStyle = {
+const footerBtnStyle = {
   color: 'var(--text-secondary)',
-  textDecoration: 'none',
+  background: 'none',
+  border: 'none',
   fontSize: '0.88rem',
   fontWeight: '600',
+  cursor: 'pointer',
+  padding: '0.2rem 0.4rem',
   transition: 'color 0.2s ease',
 };
+

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Phone, MessageCircle, Calendar, ArrowUp } from 'lucide-react';
 
-export default function MobileBottomNav({ onBookCallClick }) {
+export default function MobileBottomNav({ activeScreen, onNavigate }) {
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
@@ -69,7 +69,7 @@ export default function MobileBottomNav({ onBookCallClick }) {
         </a>
 
         <button
-          onClick={() => onBookCallClick('Class 10th Science Board Special')}
+          onClick={() => onNavigate('book-demo')}
           className="dock-item-btn"
         >
           <Calendar size={18} color="#FFFFFF" />
