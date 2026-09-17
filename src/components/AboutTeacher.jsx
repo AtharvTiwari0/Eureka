@@ -162,35 +162,41 @@ export default function AboutTeacher() {
         </div>
       </div>
 
-      {/* Verified Resume Modal */}
-      {showResumeModal && (
-        <div className="modal-overlay" onClick={() => setShowResumeModal(false)}>
+        {/* Verified Resume Inline Expandable Card */}
+        {showResumeModal && (
           <div
             className="clay-card"
-            onClick={(e) => e.stopPropagation()}
             style={{
-              maxWidth: '820px',
-              width: '92%',
-              maxHeight: '90vh',
-              overflowY: 'auto',
-              padding: '1.5rem',
+              marginTop: '2rem',
+              padding: '1.8rem',
               borderRadius: '24px',
               position: 'relative',
               background: '#FFFFFF',
+              border: '2px solid var(--primary-blue)',
+              animation: 'modalFadeIn 0.25s ease-out',
             }}
           >
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem', marginBottom: '1rem', borderBottom: '1px solid var(--border-light)', paddingBottom: '0.8rem' }}>
-              <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '0.5rem' }}>
-                <div>
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: 'var(--text-primary)', lineHeight: 1.2 }}>
-                    Abhishek Vishwakarma — Official Resume
-                  </h3>
-                  <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>Verified DU B.Sc & B.Ed Credentials</p>
-                </div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.2rem', gap: '1rem', flexWrap: 'wrap' }}>
+              <div>
+                <h3 style={{ fontSize: '1.3rem', fontWeight: '800', color: 'var(--text-primary)' }}>
+                  Abhishek Vishwakarma — Official Verified Resume
+                </h3>
+                <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Verified Credentials & Certifications</p>
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+                <a
+                  href={resumeUrl}
+                  download="Abhishek_Vishwakarma_Resume.jpg"
+                  className="btn-clay-primary"
+                  style={{ padding: '0.65rem 1.2rem', fontSize: '0.85rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
+                >
+                  <Download size={16} /> Download Resume (.JPG)
+                </a>
 
                 <button
                   onClick={() => setShowResumeModal(false)}
-                  aria-label="Close Resume Modal"
+                  aria-label="Close Resume Viewer"
                   style={{
                     background: 'var(--primary-blue-soft)',
                     border: '1px solid rgba(37, 99, 235, 0.2)',
@@ -202,22 +208,11 @@ export default function AboutTeacher() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    flexShrink: 0,
-                    boxShadow: 'var(--clay-shadow-sm)',
                   }}
                 >
                   <X size={20} />
                 </button>
               </div>
-
-              <a
-                href={resumeUrl}
-                download="Abhishek_Vishwakarma_Resume.jpg"
-                className="btn-clay-primary"
-                style={{ width: '100%', padding: '0.75rem', fontSize: '0.88rem', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem' }}
-              >
-                <Download size={16} /> Download Full High-Res Resume (.JPG)
-              </a>
             </div>
 
             <img
@@ -226,8 +221,7 @@ export default function AboutTeacher() {
               style={{ width: '100%', borderRadius: '16px', border: '1px solid var(--border-light)' }}
             />
           </div>
-        </div>
-      )}
+        )}
 
       <style>{`
         @media (max-width: 868px) {

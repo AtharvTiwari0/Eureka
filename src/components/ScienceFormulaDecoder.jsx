@@ -122,49 +122,45 @@ export default function ScienceFormulaDecoder() {
           ))}
         </div>
 
-      </div>
-
-      {/* Decoder Popup Modal */}
-      {selectedConcept && (
-        <div className="modal-overlay" onClick={() => setSelectedConcept(null)}>
+        {/* Inline Decoded Concept Showcase Card */}
+        {selectedConcept && (
           <div
-            className="clay-card"
-            onClick={(e) => e.stopPropagation()}
             style={{
-              maxWidth: '520px',
-              width: '100%',
-              padding: '2rem',
-              borderRadius: '28px',
+              marginTop: '1.2rem',
+              padding: '1.5rem',
+              borderRadius: '20px',
+              background: '#F8FAFC',
+              border: `2px solid ${selectedConcept.color}40`,
               position: 'relative',
-              background: '#FFFFFF',
-              boxShadow: 'var(--clay-shadow-lg)',
+              animation: 'modalFadeIn 0.25s ease-out',
             }}
           >
-            {/* Close */}
+            {/* Close Inline Card */}
             <button
               onClick={() => setSelectedConcept(null)}
+              aria-label="Close formula details"
               style={{
                 position: 'absolute',
-                top: '1.2rem',
-                right: '1.2rem',
-                background: '#F1F5F9',
-                border: 'none',
+                top: '1rem',
+                right: '1rem',
+                background: '#FFFFFF',
+                border: '1px solid var(--border-light)',
                 color: 'var(--text-primary)',
-                width: '36px',
-                height: '36px',
+                width: '32px',
+                height: '32px',
                 borderRadius: '50%',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
+                boxShadow: 'var(--clay-shadow-sm)',
               }}
             >
-              <X size={18} />
+              <X size={16} />
             </button>
 
-            {/* Modal Title */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.4rem' }}>
-              <span style={{ fontSize: '1.5rem', fontWeight: '900', color: selectedConcept.color, fontFamily: 'monospace' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.4rem', flexWrap: 'wrap' }}>
+              <span style={{ fontSize: '1.4rem', fontWeight: '900', color: selectedConcept.color, fontFamily: 'monospace' }}>
                 {selectedConcept.symbol}
               </span>
               <span className="clay-badge" style={{ fontSize: '0.72rem', background: selectedConcept.badgeBg, color: selectedConcept.color }}>
@@ -172,42 +168,50 @@ export default function ScienceFormulaDecoder() {
               </span>
             </div>
 
-            <h3 style={{ fontSize: '1.4rem', fontWeight: '800', color: 'var(--text-primary)', marginBottom: '1.2rem' }}>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: 'var(--text-primary)', marginBottom: '1rem' }}>
               {selectedConcept.name}
             </h3>
 
-            {/* Scientific Meaning Box */}
-            <div style={{ marginBottom: '1rem', padding: '1rem', borderRadius: '14px', background: '#F8FAFC', border: '1px solid var(--border-light)' }}>
-              <div style={{ fontSize: '0.78rem', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '0.3rem' }}>
-                🔬 Scientific Meaning
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }} className="formula-inline-grid">
+              {/* Scientific Meaning Box */}
+              <div style={{ padding: '0.9rem 1rem', borderRadius: '14px', background: '#FFFFFF', border: '1px solid var(--border-light)' }}>
+                <div style={{ fontSize: '0.75rem', fontWeight: '800', color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '0.25rem' }}>
+                  🔬 Scientific Meaning
+                </div>
+                <p style={{ fontSize: '0.88rem', color: 'var(--text-primary)', lineHeight: 1.5 }}>
+                  {selectedConcept.meaning}
+                </p>
               </div>
-              <p style={{ fontSize: '0.92rem', color: 'var(--text-primary)', lineHeight: 1.5 }}>
-                {selectedConcept.meaning}
-              </p>
-            </div>
 
-            {/* Real Life Example Box */}
-            <div style={{ marginBottom: '1rem', padding: '1rem', borderRadius: '14px', background: 'var(--accent-amber-soft)', border: '1px solid rgba(217, 119, 6, 0.15)' }}>
-              <div style={{ fontSize: '0.78rem', fontWeight: '800', color: 'var(--accent-amber)', textTransform: 'uppercase', marginBottom: '0.3rem' }}>
-                💡 Everyday Real-Life Example
+              {/* Real Life Example Box */}
+              <div style={{ padding: '0.9rem 1rem', borderRadius: '14px', background: 'var(--accent-amber-soft)', border: '1px solid rgba(217, 119, 6, 0.15)' }}>
+                <div style={{ fontSize: '0.75rem', fontWeight: '800', color: 'var(--accent-amber)', textTransform: 'uppercase', marginBottom: '0.25rem' }}>
+                  💡 Everyday Real-Life Example
+                </div>
+                <p style={{ fontSize: '0.88rem', color: 'var(--text-primary)', lineHeight: 1.5 }}>
+                  {selectedConcept.realLife}
+                </p>
               </div>
-              <p style={{ fontSize: '0.9rem', color: 'var(--text-primary)', lineHeight: 1.5 }}>
-                {selectedConcept.realLife}
-              </p>
             </div>
 
             {/* CBSE Exam Note */}
-            <div style={{ padding: '0.9rem 1rem', borderRadius: '14px', background: 'var(--primary-blue-soft)', border: '1px solid rgba(37, 99, 235, 0.15)', display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
+            <div style={{ padding: '0.85rem 1rem', borderRadius: '14px', background: 'var(--primary-blue-soft)', border: '1px solid rgba(37, 99, 235, 0.15)', display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
               <CheckCircle2 size={18} color="var(--primary-blue)" style={{ marginTop: '0.15rem', flexShrink: 0 }} />
               <div>
                 <span style={{ fontSize: '0.8rem', fontWeight: '800', color: 'var(--primary-blue)', display: 'block' }}>CBSE Board Exam Insight:</span>
                 <span style={{ fontSize: '0.82rem', color: 'var(--text-secondary)' }}>{selectedConcept.cbseTip}</span>
               </div>
             </div>
-
           </div>
-        </div>
-      )}
+        )}
+
+      </div>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .formula-inline-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </div>
   );
 }
