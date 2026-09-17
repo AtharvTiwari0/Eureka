@@ -55,7 +55,7 @@ export default function Hero({ onBookCallClick }) {
             </h1>
 
             <p style={{ fontSize: '1.15rem', color: 'var(--text-secondary)', marginBottom: '2.2rem', maxWidth: '580px', lineHeight: 1.65 }}>
-              Expert mentorship by <strong>Abhishek Vishwakarma Sir</strong>. Specialized CBSE Science for 
+              Expert mentorship by <strong>Abhishek Vishwakarma</strong>. Specialized CBSE Science for 
               <span style={{ color: 'var(--text-primary)', fontWeight: '700' }}> Classes 9th & 10th </span> and foundation for 
               <span style={{ color: 'var(--text-primary)', fontWeight: '700' }}> Classes 6th to 8th</span>.
             </p>

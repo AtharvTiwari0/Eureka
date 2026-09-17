@@ -202,7 +202,7 @@ export default function Testimonials() {
                 <h3 style={{ fontSize: '1.38rem', fontWeight: '800' }}>Submit Your Review</h3>
               </div>
               <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', marginBottom: '1.5rem' }}>
-                Share your learning experience or feedback with Abhishek Vishwakarma Sir.
+                Share your learning experience or feedback with Abhishek Vishwakarma.
               </p>
 
               {!submitted ? (

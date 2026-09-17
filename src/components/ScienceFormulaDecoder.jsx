@@ -200,7 +200,7 @@ export default function ScienceFormulaDecoder() {
             <div style={{ padding: '0.9rem 1rem', borderRadius: '14px', background: 'var(--primary-blue-soft)', border: '1px solid rgba(37, 99, 235, 0.15)', display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
               <CheckCircle2 size={18} color="var(--primary-blue)" style={{ marginTop: '0.15rem', flexShrink: 0 }} />
               <div>
-                <span style={{ fontSize: '0.8rem', fontWeight: '800', color: 'var(--primary-blue)', display: 'block' }}>Abhishek Sir\'s CBSE Exam Insight:</span>
+                <span style={{ fontSize: '0.8rem', fontWeight: '800', color: 'var(--primary-blue)', display: 'block' }}>CBSE Board Exam Insight:</span>
                 <span style={{ fontSize: '0.82rem', color: 'var(--text-secondary)' }}>{selectedConcept.cbseTip}</span>
               </div>
             </div>

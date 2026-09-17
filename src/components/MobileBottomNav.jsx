@@ -54,11 +54,11 @@ export default function MobileBottomNav({ onBookCallClick }) {
           style={{ color: 'var(--text-primary)' }}
         >
           <Phone size={18} color="var(--primary-blue)" />
-          <span>Call Sir</span>
+          <span>Call Center</span>
         </a>
 
         <a
-          href="https://wa.me/919452184870?text=Hello%20Abhishek%20Sir!%20I%20visited%20Eureka%20Classes%20website%20and%20want%20to%20inquire%20about%20admissions."
+          href="https://wa.me/919452184870?text=Hello%20Abhishek%20Vishwakarma!%20I%20visited%20Eureka%20Classes%20website%20and%20want%20to%20inquire%20about%20admissions."
           target="_blank"
           rel="noreferrer"
           className="dock-item"

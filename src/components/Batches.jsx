@@ -282,7 +282,7 @@ export default function Batches({ onSelectBatch }) {
                   🎓 2 Free Demo Classes
                 </div>
                 <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)' }}>
-                  Attend two full classes free of cost to experience Abhishek Sir's conceptual teaching before taking admission.
+                  Attend two full classes free of cost to experience Abhishek Vishwakarma's conceptual teaching before taking admission.
                 </p>
               </div>
             </div>

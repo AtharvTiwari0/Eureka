@@ -51,7 +51,7 @@ export default function AboutTeacher() {
             >
               <img
                 src="/assets/abhishek_sir.jpg"
-                alt="Abhishek Vishwakarma Sir"
+                alt="Abhishek Vishwakarma"
                 style={{
                   width: '100%',
                   height: '100%',
@@ -222,7 +222,7 @@ export default function AboutTeacher() {
 
             <img
               src={resumeUrl}
-              alt="Abhishek Sir Verified Resume"
+              alt="Abhishek Vishwakarma Verified Resume"
               style={{ width: '100%', borderRadius: '16px', border: '1px solid var(--border-light)' }}
             />
           </div>

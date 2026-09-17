@@ -44,7 +44,7 @@ export default function LocationContact() {
     setQuerySubmitted(true);
 
     const text = encodeURIComponent(
-      `Hello Abhishek Sir! I submitted a query on Eureka Classes website:\n\n` +
+      `Hello Abhishek Vishwakarma! I submitted a query on Eureka Classes website:\n\n` +
       `👤 Name: ${name}\n` +
       `📞 Phone: ${phone}\n` +
       `❓ Query: ${query}`
@@ -144,7 +144,7 @@ export default function LocationContact() {
                 <h3 style={{ fontSize: '1.38rem', fontWeight: '800' }}>Ask A Query</h3>
               </div>
               <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', marginBottom: '1.5rem' }}>
-                Have questions about Class 9th/10th Science, 6th-8th Subjects, timings, or fees? Send a message directly to Abhishek Sir.
+                Have questions about Class 9th/10th Science, 6th-8th Subjects, timings, or fees? Send a message directly to Abhishek Vishwakarma.
               </p>
 
               {!querySubmitted ? (
@@ -198,10 +198,22 @@ export default function LocationContact() {
               ) : (
                 <div style={{ textAlign: 'center', padding: '2rem 1rem' }}>
                   <CheckCircle2 size={48} color="var(--accent-emerald)" style={{ margin: '0 auto 1rem auto' }} />
-                  <h4 style={{ fontSize: '1.3rem', fontWeight: '800', marginBottom: '0.5rem' }}>Query Submitted!</h4>
-                  <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
-                    Your message has been sent to Abhishek Sir. Opening WhatsApp...
+                  <h4 style={{ fontSize: '1.3rem', fontWeight: '800', marginBottom: '0.5rem' }}>Inquiry Submitted!</h4>
+                  <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '1.2rem', lineHeight: 1.5 }}>
+                    Opening WhatsApp automatically... <br />
+                    <strong style={{ color: 'var(--text-primary)', display: 'block', marginTop: '0.4rem' }}>
+                      Please click "Send" in WhatsApp to confirm your inquiry with Abhishek Vishwakarma (+91 9452184870).
+                    </strong>
                   </p>
+                  <a
+                    href={`https://wa.me/919452184870?text=${encodeURIComponent(`Hello Abhishek Vishwakarma! I submitted a query on Eureka Classes website:\n\n👤 Name: ${name}\n📞 Phone: ${phone}\n❓ Query: ${query}`)}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn-clay-primary"
+                    style={{ padding: '0.65rem 1.2rem', fontSize: '0.85rem', textDecoration: 'none' }}
+                  >
+                    Click Here if WhatsApp Doesn't Open
+                  </a>
                 </div>
               )}
             </div>

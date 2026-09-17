@@ -169,25 +169,28 @@ export default function BookCallModal({ isOpen, onClose, preselectedBatch }) {
                       type="button"
                       onClick={() => setSelectedBatchName(b.id)}
                       style={{
-                        padding: '0.7rem 0.9rem',
+                        padding: '0.65rem 0.85rem',
                         borderRadius: '12px',
                         border: isSelected ? '2px solid var(--primary-blue)' : '1px solid var(--border-light)',
                         background: isSelected ? 'var(--primary-blue-soft)' : '#F8FAFC',
                         color: isSelected ? 'var(--primary-blue)' : 'var(--text-primary)',
                         fontWeight: '700',
-                        fontSize: '0.88rem',
+                        fontSize: '0.85rem',
                         cursor: 'pointer',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'space-between',
                         transition: 'all 0.2s ease',
+                        width: '100%',
+                        boxSizing: 'border-box',
+                        gap: '0.5rem',
                       }}
                     >
-                      <div style={{ textAlign: 'left' }}>
-                        <div style={{ fontWeight: '800' }}>{b.label}</div>
-                        <div style={{ fontSize: '0.72rem', color: isSelected ? 'var(--primary-blue)' : 'var(--text-muted)', opacity: 0.85 }}>{b.timing}</div>
+                      <div style={{ textAlign: 'left', minWidth: 0, flex: 1 }}>
+                        <div style={{ fontWeight: '800', fontSize: '0.86rem', lineHeight: 1.25, wordBreak: 'break-word' }}>{b.label}</div>
+                        <div style={{ fontSize: '0.72rem', color: isSelected ? 'var(--primary-blue)' : 'var(--text-muted)', opacity: 0.85, marginTop: '0.15rem' }}>{b.timing}</div>
                       </div>
-                      {isSelected && <CheckCircle2 size={18} color="var(--primary-blue)" />}
+                      {isSelected && <CheckCircle2 size={18} color="var(--primary-blue)" style={{ flexShrink: 0 }} />}
                     </button>
                   );
                 })}
@@ -237,7 +240,7 @@ export default function BookCallModal({ isOpen, onClose, preselectedBatch }) {
                 selectedBatchName.includes('10th') ? '4:00 PM - 5:00 PM (Class 10th Regular Batch)' :
                 selectedBatchName.includes('9th') ? '5:00 PM - 6:00 PM (Class 9th Regular Batch)' :
                 '3:00 PM - 4:00 PM (Classes 6th - 8th Regular Batch)',
-                '6:30 PM (Special Counseling Call with Sir)',
+                '6:30 PM (Special Counseling Session)',
               ].map((slot, idx) => (
                 <button
                   key={idx}
@@ -316,7 +319,7 @@ export default function BookCallModal({ isOpen, onClose, preselectedBatch }) {
               <label style={labelStyle}>Special Request / Question (Optional)</label>
               <textarea
                 rows={2}
-                placeholder="Type any question or note for Abhishek Sir..."
+                placeholder="Type any question or note for Abhishek Vishwakarma..."
                 value={queryNote}
                 onChange={(e) => setQueryNote(e.target.value)}
                 className="clay-input"
@@ -364,16 +367,31 @@ export default function BookCallModal({ isOpen, onClose, preselectedBatch }) {
               <CheckCircle2 size={36} color="var(--accent-emerald)" />
             </div>
 
-            <h3 style={{ fontSize: '1.5rem', color: 'var(--text-primary)', fontWeight: '800', marginBottom: '0.5rem' }}>
-              Demo Class Slot Locked!
+            <h3 style={{ fontSize: '1.4rem', color: 'var(--text-primary)', fontWeight: '800', marginBottom: '0.5rem' }}>
+              Demo Class Slot Recorded!
             </h3>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', marginBottom: '1.5rem' }}>
-              Your request has been submitted and forwarded to <strong>Abhishek Vishwakarma Sir (+91 9452184870)</strong>.
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '1.4rem', lineHeight: 1.5 }}>
+              Opening WhatsApp automatically... <br />
+              <strong style={{ color: 'var(--text-primary)', display: 'block', marginTop: '0.4rem' }}>
+                Please click "Send" in WhatsApp to confirm your demo seat with Abhishek Vishwakarma (+91 9452184870).
+              </strong>
             </p>
 
-            <button onClick={onClose} className="btn-clay-secondary" style={{ width: '100%' }}>
-              Close Window
-            </button>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+              <a
+                href={`https://wa.me/919452184870?text=${encodeURIComponent(`Hello Abhishek Vishwakarma! I want to book 2 Free Demo Classes for Eureka Classes.\n\n🎯 TARGET BATCH: ${selectedBatchName}\n📅 Preferred Date: ${selectedDate}\n⏰ Preferred Slot: ${selectedSlot}\n👤 Student Name: ${studentName}\n📞 Contact Phone: ${phone}\n${queryNote ? `📝 Note: ${queryNote}\n` : ''}\nPlease confirm my demo seat!`)}`}
+                target="_blank"
+                rel="noreferrer"
+                className="btn-clay-primary"
+                style={{ width: '100%', padding: '0.75rem', fontSize: '0.88rem', textDecoration: 'none' }}
+              >
+                Click Here if WhatsApp Doesn't Open
+              </a>
+
+              <button onClick={onClose} className="btn-clay-secondary" style={{ width: '100%', padding: '0.75rem', fontSize: '0.88rem' }}>
+                Close Window
+              </button>
+            </div>
           </div>
         )}
 
