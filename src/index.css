@@ -1,43 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter:wght@400;500;600;700&display=swap');
+
 /* 
-  EUREKA CLASSES - CLAYMORPHISM & MINIMALIST INSTITUTION DESIGN SYSTEM
-  Inspired by UI/UX Pro Max guidelines: Soft tactile 3D forms, high legibility, clean institutional aesthetics.
+  EUREKA CLASSES - AETHERA CINEMATIC DESIGN SYSTEM
+  Instrument Serif Display Typography, Seamless Video Loop, Minimalist Luxury Palette
 */
 
 :root {
-  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Instrument Serif', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 
-  /* Color Palette - Warm Ivory & Royal Institutional Blue */
-  --bg-page: #F1F5F9;
+  /* Aethera Minimal Color Palette */
+  --bg-page: #FFFFFF;
   --bg-surface: #FFFFFF;
   
-  --primary-blue: #2563EB;
-  --primary-blue-hover: #1D4ED8;
-  --primary-blue-soft: #EFF6FF;
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+  --color-gray: #6F6F6F;
+  --color-gray-light: #F4F4F4;
 
-  --accent-emerald: #059669;
-  --accent-emerald-soft: #ECFDF5;
-  
-  --accent-amber: #D97706;
-  --accent-amber-soft: #FFFBEB;
+  --primary-blue: #000000;
+  --primary-blue-hover: #1A1A1A;
+  --primary-blue-soft: #F4F4F4;
 
-  --text-primary: #0F172A;
-  --text-secondary: #475569;
-  --text-muted: #64748B;
-  --text-light: #94A3B8;
+  --text-primary: #000000;
+  --text-secondary: #6F6F6F;
+  --text-muted: #999999;
 
-  --border-light: #E2E8F0;
+  --border-light: #E5E5E5;
+}
 
-  /* Claymorphism Shadows */
-  --clay-shadow-sm: 6px 6px 14px rgba(166, 180, 200, 0.4), -6px -6px 14px rgba(255, 255, 255, 0.8), inset -2px -2px 5px rgba(166, 180, 200, 0.1), inset 2px 2px 5px rgba(255, 255, 255, 0.9);
-  --clay-shadow-md: 10px 14px 28px rgba(150, 168, 195, 0.35), -10px -10px 28px rgba(255, 255, 255, 0.9), inset -3px -3px 8px rgba(150, 168, 195, 0.1), inset 3px 3px 8px rgba(255, 255, 255, 1);
-  --clay-shadow-lg: 16px 20px 38px rgba(140, 160, 190, 0.35), -16px -16px 38px rgba(255, 255, 255, 1), inset -4px -4px 10px rgba(140, 160, 190, 0.12), inset 4px 4px 10px rgba(255, 255, 255, 1);
-  --clay-pressed: inset 4px 4px 8px rgba(150, 168, 195, 0.4), inset -4px -4px 8px rgba(255, 255, 255, 0.8);
+/* Animations */
+@keyframes fadeRise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-  --radius-sm: 12px;
-  --radius-md: 20px;
-  --radius-lg: 28px;
-  --radius-full: 9999px;
+.animate-fade-rise {
+  animation: fadeRise 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-rise-delay {
+  animation: fadeRise 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+  opacity: 0;
+}
+
+.animate-fade-rise-delay-2 {
+  animation: fadeRise 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+  opacity: 0;
+}
+
+.font-serif-instrument {
+  font-family: 'Instrument Serif', Georgia, serif;
+}
+
+.font-inter-body {
+  font-family: 'Inter', sans-serif;
 }
 
 * {
@@ -58,6 +81,71 @@ body {
   min-height: 100vh;
   line-height: 1.6;
   background-color: var(--bg-page);
+  color: var(--text-primary);
+}
+
+/* Sticky Top Brand Bar */
+.sticky-top-bar {
+  position: sticky;
+  top: 0;
+  z-index: 500;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border-light);
+  padding: 0.75rem 0;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+  transition: all 0.3s ease;
+}
+
+/* Multi-Background Sections with Smooth Gradient Transitions */
+.section-bg-hero {
+  background: #FFFFFF;
+  padding: 0;
+  margin: 0;
+  border-bottom: none;
+}
+
+.section-bg-decoders {
+  background: linear-gradient(180deg, #FFFBEB 0%, #FEF3C7 60%, #FFFBEB 100%);
+  padding: 3.5rem 0;
+  border-bottom: 1px solid rgba(245, 158, 11, 0.12);
+}
+
+.section-bg-teacher {
+  background: linear-gradient(180deg, #ECFDF5 0%, #D1FAE5 60%, #ECFDF5 100%);
+  padding: 3.5rem 0;
+  border-bottom: 1px solid rgba(16, 185, 129, 0.12);
+}
+
+.section-bg-reviews {
+  background: linear-gradient(180deg, #EFF6FF 0%, #DBEAFE 60%, #EFF6FF 100%);
+  padding: 3.5rem 0;
+  border-bottom: 1px solid rgba(37, 99, 235, 0.12);
+}
+
+.section-bg-map {
+  background: linear-gradient(180deg, #F1F5F9 0%, #E2E8F0 60%, #F8FAFC 100%);
+  padding: 3.5rem 0;
+}
+
+/* Blinkit Style Giant Footer Text - Seamless Background Blend */
+.blinkit-footer-text {
+  font-size: clamp(3.5rem, 15vw, 14rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.05em;
+  line-height: 0.82;
+  color: rgba(15, 23, 42, 0.07);
+  background: linear-gradient(180deg, rgba(37, 99, 235, 0.12) 0%, rgba(15, 23, 42, 0.06) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  user-select: none;
+  width: 100%;
+  text-align: center;
+  pointer-events: none;
+  transform: perspective(800px) rotateX(10deg);
+  transform-origin: bottom center;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -388,4 +476,70 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 20px !important;
   }
 }
+
+/* 
+  =====================================================
+  100% UNIVERSAL RESPONSIVE ENGINE (MOBILE/TABLET/DESKTOP)
+  Prevents button clipping, horizontal overflow, and layout shifts.
+  =====================================================
+*/
+html, body {
+  overflow-x: hidden !important;
+  width: 100% !important;
+}
+
+/* Prevent auto-zoom on iOS inputs */
+input, select, textarea {
+  font-size: 16px !important;
+}
+
+@media (max-width: 640px) {
+  /* Global header padding tuning */
+  header {
+    padding: 0.9rem 1rem !important;
+  }
+
+  /* Main container padding */
+  main {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Grid layout fallbacks */
+  .method-grid-responsive {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+
+  /* Button groups auto-wrap & full-width scaling */
+  button {
+    max-width: 100% !important;
+  }
+
+  .batch-card-header {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  /* Prevent text clipping */
+  h1 {
+    font-size: clamp(2.1rem, 8vw, 3.5rem) !important;
+  }
+
+  h2 {
+    font-size: clamp(1.6rem, 6vw, 2.5rem) !important;
+  }
+
+  /* Pitara Mega Menu mobile layout */
+  .pitara-4grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.8rem !important;
+  }
+
+  .pitara-dropdown-wrapper {
+    width: calc(100% - 1.5rem) !important;
+    padding: 1.2rem 1rem !important;
+  }
+}
+
 

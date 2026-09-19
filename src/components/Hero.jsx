@@ -1,203 +1,250 @@
-import React from 'react';
-import { PhoneCall, Sparkles, Award, GraduationCap, ArrowRight, ShieldCheck, CheckCircle2, Clock, BookOpen } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { ChevronDown } from 'lucide-react';
 
-export default function Hero({ onBookCallClick, onExploreBatches }) {
-  const coreServices = [
-    {
-      title: 'Class 10th Science Board Special',
-      time: '4:00 PM - 5:00 PM',
-      badge: 'CBSE BOARD FOCUS',
-      color: 'var(--primary-blue)',
-      bg: 'var(--primary-blue-soft)',
-      desc: 'Physics, Chemistry & Biology with CBSE Examiner answer-writing strategy.',
-    },
-    {
-      title: 'Class 9th Science Foundation',
-      time: '5:00 PM - 6:00 PM',
-      badge: 'BOARD FOUNDATION',
-      color: 'var(--accent-emerald)',
-      bg: 'var(--accent-emerald-soft)',
-      desc: 'Building solid conceptual base in Physics, Chemistry & Biology for 10th.',
-    },
-    {
-      title: 'Classes 6th to 8th All Subjects',
-      time: '3:00 PM - 4:00 PM',
-      badge: 'MIDDLE SCHOOL STAR',
-      color: 'var(--accent-amber)',
-      bg: 'var(--accent-amber-soft)',
-      desc: 'Multidisciplinary foundation in Science, Math, English & Social Science.',
-    },
-  ];
+export default function Hero({ onBookCallClick }) {
+  const videoRef = useRef(null);
+  const [videoOpacity, setVideoOpacity] = useState(0);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    let animFrameId;
+
+    const checkTime = () => {
+      if (video.duration && !video.paused) {
+        const currentTime = video.currentTime;
+        const duration = video.duration;
+        const fadeDuration = 0.5; // 0.5s fade duration
+
+        let opacity = 1;
+
+        // Fade in over 0.5s at the start
+        if (currentTime < fadeDuration) {
+          opacity = currentTime / fadeDuration;
+        } 
+        // Fade out over 0.5s before the end
+        else if (currentTime > duration - fadeDuration) {
+          opacity = Math.max(0, (duration - currentTime) / fadeDuration);
+        }
+
+        setVideoOpacity(opacity);
+      }
+      animFrameId = requestAnimationFrame(checkTime);
+    };
+
+    animFrameId = requestAnimationFrame(checkTime);
+
+    const handleEnded = () => {
+      setVideoOpacity(0);
+      setTimeout(() => {
+        if (video) {
+          video.currentTime = 0;
+          video.play().catch(() => {});
+        }
+      }, 100);
+    };
+
+    video.addEventListener('ended', handleEnded);
+
+    return () => {
+      cancelAnimationFrame(animFrameId);
+      if (video) {
+        video.removeEventListener('ended', handleEnded);
+      }
+    };
+  }, []);
 
   return (
     <section
       style={{
-        paddingTop: '8.5rem',
-        paddingBottom: '5rem',
         position: 'relative',
-        background: 'linear-gradient(180deg, #F1F5F9 0%, #FFFFFF 100%)',
+        minHeight: '75vh',
+        width: '100%',
+        overflow: 'hidden',
+        background: '#FFFFFF',
+        margin: 0,
+        padding: 0,
       }}
     >
-      <div className="container">
+      {/* Background Video Layer (z-0) with top: 120px and smooth opacity loop */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '120px',
+          left: 0,
+          right: 0,
+          bottom: 0,
+          zIndex: 0,
+          overflow: 'hidden',
+          pointerEvents: 'none',
+        }}
+      >
+        <video
+          ref={videoRef}
+          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_083109_283f3553-e28f-428b-a723-d639c617eb2b.mp4"
+          autoPlay
+          muted
+          playsInline
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            opacity: videoOpacity,
+            transition: 'opacity 0.1s linear',
+          }}
+        />
         
-        {/* Main Hero 2-Column Layout */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1.15fr 0.95fr', gap: '3.5rem', alignItems: 'center' }} className="hero-grid">
-          
-          {/* Left Side: Clean Institutional Title */}
-          <div>
-            <div className="clay-badge" style={{ marginBottom: '1.2rem' }}>
-              <Sparkles size={16} /> Science & Middle School Coaching
-            </div>
+        {/* Gradient overlays positioned over the video */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 25%, rgba(255, 255, 255, 0) 75%, #FFFFFF 100%)',
+            pointerEvents: 'none',
+          }}
+        />
+      </div>
 
-            <h1 style={{ fontSize: 'clamp(2.4rem, 4.5vw, 3.8rem)', fontWeight: '800', lineHeight: 1.15, marginBottom: '1.2rem', letterSpacing: '-0.03em' }}>
-              Concept-Based Science <br />
-              <span style={{ color: 'var(--primary-blue)' }}>Coaching & Foundation</span>
-            </h1>
+      {/* Hero Content Section (z-10) */}
+      <div
+        style={{
+          position: 'relative',
+          zIndex: 10,
+          paddingTop: '2.5rem',
+          paddingBottom: '3.5rem',
+          paddingLeft: '1.5rem',
+          paddingRight: '1.5rem',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          textAlign: 'center',
+          maxWidth: '80rem',
+          margin: '0 auto',
+        }}
+      >
+        {/* Main Headline */}
+        <h1
+          className="animate-fade-rise"
+          style={{
+            fontSize: 'clamp(2.5rem, 5.5vw, 5.2rem)',
+            fontFamily: "'Instrument Serif', Georgia, serif",
+            fontWeight: 400,
+            lineHeight: 1.05,
+            letterSpacing: '-1.5px',
+            color: '#000000',
+            maxWidth: '75rem',
+            margin: '0 auto',
+          }}
+        >
+          Specialized CBSE Science & <span style={{ fontStyle: 'italic', color: '#6F6F6F' }}>Foundation Coaching</span>
+        </h1>
 
-            <p style={{ fontSize: '1.15rem', color: 'var(--text-secondary)', marginBottom: '2.2rem', maxWidth: '580px', lineHeight: 1.65 }}>
-              Expert mentorship by <strong>Abhishek Vishwakarma</strong>. Specialized CBSE Science for 
-              <span style={{ color: 'var(--text-primary)', fontWeight: '700' }}> Classes 9th & 10th </span> and foundation for 
-              <span style={{ color: 'var(--text-primary)', fontWeight: '700' }}> Classes 6th to 8th</span>.
-            </p>
+        {/* Subtitle / Description */}
+        <p
+          className="animate-fade-rise-delay"
+          style={{
+            fontSize: 'clamp(1.08rem, 1.4vw, 1.25rem)',
+            fontFamily: "'Inter', sans-serif",
+            color: '#0F172A', // Dark Slate for 100% crisp visibility
+            maxWidth: '46rem',
+            marginTop: '1.8rem',
+            lineHeight: 1.7,
+            fontWeight: 500,
+            textShadow: '0 1px 2px rgba(255, 255, 255, 0.8)',
+          }}
+        >
+          Concept-based Science coaching by <strong style={{ color: '#000000', fontWeight: 700 }}>Abhishek Vishwakarma</strong> (M.Sc. Physics Gold Medalist). 
+          Specialized CBSE Board preparation for <span style={{ color: '#000000', fontWeight: 700 }}>Classes 9th & 10th</span> and multidisciplinary foundation for <span style={{ color: '#000000', fontWeight: 700 }}>Classes 6th to 8th</span>.
+        </p>
 
-            {/* Credibility Highlights */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem', marginBottom: '2.5rem' }}>
-              <div style={pillStyle}>
-                <Award size={16} color="var(--primary-blue)" /> 5+ Years Exp (CBSE Examiner)
-              </div>
-              <div style={pillStyle}>
-                <GraduationCap size={16} color="var(--accent-emerald)" /> B.Sc (Electronics DU) • B.Ed
-              </div>
-              <div style={pillStyle}>
-                <ShieldCheck size={16} color="var(--accent-amber)" /> 2 Free Demo Classes
-              </div>
-            </div>
-
-            {/* Main Action Buttons */}
-            <div className="hero-buttons-group" style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}>
-              <button
-                onClick={() => onBookCallClick('Class 10th Science Board Special')}
-                className="btn-clay-primary"
-                style={{ padding: '1.05rem 2.2rem', fontSize: '1.05rem' }}
-              >
-                <PhoneCall size={20} /> Book Free Demo Class
-              </button>
-              
-              <button
-                onClick={onExploreBatches}
-                className="btn-clay-secondary"
-                style={{ padding: '1.05rem 2rem', fontSize: '1.05rem', cursor: 'pointer' }}
-              >
-                View Batches <ArrowRight size={18} />
-              </button>
-            </div>
-          </div>
-
-          {/* Right Side: OUR 3 CORE BATCHES / SERVICES SUMMARY */}
-          <div>
+        {/* Creative Interactive Scroll Down Indicator */}
+        <div
+          onClick={() => {
+            const decodersElem = document.getElementById('decoders');
+            if (decodersElem) {
+              decodersElem.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
+          className="animate-fade-rise-delay-2 scroll-indicator-btn"
+          style={{
+            marginTop: '3.2rem',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '0.5rem',
+            cursor: 'pointer',
+            userSelect: 'none',
+          }}
+        >
+          <span style={{ fontSize: '0.82rem', color: '#0F172A', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', fontFamily: "'Inter', sans-serif" }}>
+            Scroll to explore
+          </span>
+          <div
+            style={{
+              width: '24px',
+              height: '38px',
+              borderRadius: '9999px',
+              border: '1.5px solid #000000',
+              display: 'flex',
+              justifyContent: 'center',
+              paddingTop: '6px',
+              boxShadow: '0 4px 14px rgba(0,0,0,0.08)',
+              background: '#FFFFFF',
+            }}
+          >
             <div
-              className="clay-card"
               style={{
-                padding: '2rem',
-                borderRadius: '28px',
-                background: '#FFFFFF',
-                boxShadow: 'var(--clay-shadow-lg)',
+                width: '4px',
+                height: '8px',
+                borderRadius: '9999px',
+                background: '#000000',
+                animation: 'mouseWheelScroll 1.6s ease-in-out infinite',
               }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.2rem' }}>
-                <h3 style={{ fontSize: '1.3rem', fontWeight: '800', color: 'var(--text-primary)' }}>
-                  Our Batches & Timings
-                </h3>
-                <span className="clay-badge" style={{ fontSize: '0.72rem', padding: '0.2rem 0.6rem' }}>
-                  Admissions Open
-                </span>
-              </div>
-
-              {/* List of 3 Services Only */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                {coreServices.map((service, idx) => (
-                  <div
-                    key={idx}
-                    style={{
-                      padding: '1.1rem',
-                      borderRadius: '16px',
-                      background: service.bg,
-                      border: `1px solid ${service.color}25`,
-                      display: 'flex',
-                      flexDirection: 'column',
-                      gap: '0.4rem',
-                      transition: 'all 0.2s ease',
-                    }}
-                  >
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                      <span style={{ fontSize: '0.75rem', fontWeight: '800', color: service.color, letterSpacing: '0.04em' }}>
-                        {service.badge}
-                      </span>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', color: service.color, fontSize: '0.82rem', fontWeight: '800' }}>
-                        <Clock size={15} /> {service.time}
-                      </div>
-                    </div>
-
-                    <h4 style={{ fontSize: '1.05rem', fontWeight: '800', color: 'var(--text-primary)' }}>
-                      {service.title}
-                    </h4>
-
-                    <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)' }}>
-                      {service.desc}
-                    </p>
-
-                    <button
-                      onClick={() => onBookCallClick(service.title)}
-                      style={{
-                        alignSelf: 'flex-start',
-                        marginTop: '0.3rem',
-                        padding: '0.35rem 0.85rem',
-                        borderRadius: '8px',
-                        background: '#FFFFFF',
-                        border: `1px solid ${service.color}40`,
-                        color: service.color,
-                        fontWeight: '800',
-                        fontSize: '0.8rem',
-                        cursor: 'pointer',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '0.3rem',
-                      }}
-                    >
-                      <BookOpen size={14} /> Enroll In This Batch →
-                    </button>
-                  </div>
-                ))}
-              </div>
-
-              <div style={{ marginTop: '1.2rem', paddingTop: '1rem', borderTop: '1px solid var(--border-light)', display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-muted)', fontSize: '0.82rem', fontWeight: '600' }}>
-                <CheckCircle2 size={16} color="var(--accent-emerald)" /> 2 Free Demo Classes Available For All Batches
-              </div>
-            </div>
+            />
           </div>
-
+          <ChevronDown size={16} color="#000000" style={{ animation: 'bounceDown 1.5s ease-in-out infinite' }} />
         </div>
       </div>
 
       <style>{`
-        @media (max-width: 992px) {
-          .hero-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
+        @keyframes mouseWheelScroll {
+          0% { transform: translateY(0); opacity: 1; }
+          50% { transform: translateY(9px); opacity: 0.3; }
+          100% { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes bounceDown {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(6px); }
+        }
+
+        .scroll-indicator-btn:hover {
+          transform: translateY(2px);
+        }
+
+        .aethera-nav-cta:hover {
+          transform: scale(1.03);
+          background: #1A1A1A !important;
         }
       `}</style>
     </section>
   );
 }
 
-const pillStyle = {
+
+const chipStyle = {
   display: 'inline-flex',
   alignItems: 'center',
   gap: '0.5rem',
-  padding: '0.45rem 0.9rem',
-  borderRadius: '12px',
-  background: '#FFFFFF',
-  border: '1px solid var(--border-light)',
-  boxShadow: 'var(--clay-shadow-sm)',
-  color: 'var(--text-primary)',
-  fontSize: '0.88rem',
-  fontWeight: '600',
+  padding: '0.55rem 1rem',
+  borderRadius: '9999px',
+  background: 'rgba(15, 23, 42, 0.65)',
+  backdropFilter: 'blur(12px)',
+  border: '1px solid rgba(255, 255, 255, 0.15)',
+  color: '#F8FAFC',
+  fontSize: '0.82rem',
+  fontWeight: '700',
 };
+
