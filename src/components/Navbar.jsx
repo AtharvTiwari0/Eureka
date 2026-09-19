@@ -67,22 +67,25 @@ export default function Navbar({ onBookCallClick, onNavigateScreen }) {
           justifyContent: 'space-between',
           maxWidth: '80rem', // max-w-7xl
           margin: '0 auto',
-          padding: '1.5rem 2rem',
+          padding: '0.85rem 1.5rem',
           position: 'relative',
         }}
       >
-        {/* Left: Aethera Style Instrument Serif Brand Logo */}
+        {/* Left: Brand Logo */}
         <div
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          style={{ display: 'flex', alignItems: 'center', gap: '0.2rem', cursor: 'pointer' }}
+          style={{ display: 'flex', alignItems: 'center', gap: '0.2rem', cursor: 'pointer', height: '42px' }}
         >
           <span
             style={{
-              fontSize: '2rem',
+              fontSize: '1.85rem',
               fontWeight: '400',
               fontFamily: "'Instrument Serif', Georgia, serif",
               color: '#000000',
               letterSpacing: '-0.025em',
+              lineHeight: '1',
+              display: 'inline-flex',
+              alignItems: 'center',
             }}
           >
             Eureka
@@ -90,26 +93,30 @@ export default function Navbar({ onBookCallClick, onNavigateScreen }) {
         </div>
 
         {/* Center/Right Menu: Minimalist "More Info v" Mega Dropdown & Black Pill CTA */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
           
-          <nav className="desktop-nav-menu" style={{ display: 'flex', alignItems: 'center', gap: '1.8rem' }}>
+          <nav className="desktop-nav-menu" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
             {/* More Info Dropdown Trigger */}
             <button
               onClick={() => setMegaMenuOpen(!megaMenuOpen)}
               onMouseEnter={() => setMegaMenuOpen(true)}
               style={{
-                background: 'transparent',
+                background: megaMenuOpen ? 'rgba(0, 0, 0, 0.05)' : 'transparent',
                 border: 'none',
-                color: megaMenuOpen ? '#000000' : '#6F6F6F',
-                fontSize: '0.92rem',
-                fontWeight: '500',
+                borderRadius: '9999px',
+                color: megaMenuOpen ? '#000000' : '#4B5563',
+                fontSize: '0.9rem',
+                fontWeight: '600',
                 fontFamily: "'Inter', sans-serif",
                 cursor: 'pointer',
-                display: 'flex',
+                display: 'inline-flex',
                 alignItems: 'center',
+                justifyContent: 'center',
                 gap: '0.35rem',
-                padding: '0.4rem 0',
-                transition: 'color 0.2s ease',
+                height: '42px',
+                padding: '0 1rem',
+                lineHeight: '1',
+                transition: 'all 0.2s ease',
               }}
             >
               <span>More Info</span>
@@ -118,13 +125,13 @@ export default function Navbar({ onBookCallClick, onNavigateScreen }) {
                 style={{
                   transform: megaMenuOpen ? 'rotate(180deg)' : 'rotate(0deg)',
                   transition: 'transform 0.25s ease',
-                  color: megaMenuOpen ? '#000000' : '#6F6F6F',
+                  color: megaMenuOpen ? '#000000' : '#6B7280',
                 }}
               />
             </button>
           </nav>
 
-          {/* Black CTA Button ("Begin Journey" / "Book 2 Free Demos") */}
+          {/* Black CTA Button ("Book 2 Free Demos") */}
           <button
             onClick={() => handleSelectBatch('Class 10th Science Board Special')}
             className="aethera-nav-cta"
@@ -132,16 +139,21 @@ export default function Navbar({ onBookCallClick, onNavigateScreen }) {
               background: '#000000',
               color: '#FFFFFF',
               border: 'none',
-              padding: '0.65rem 1.6rem',
+              height: '42px',
+              padding: '0 1.25rem',
               borderRadius: '9999px',
-              fontWeight: '500',
+              fontWeight: '600',
               fontSize: '0.88rem',
               fontFamily: "'Inter', sans-serif",
               cursor: 'pointer',
               display: 'inline-flex',
               alignItems: 'center',
-              gap: '0.5rem',
+              justifyContent: 'center',
+              gap: '0.45rem',
+              lineHeight: '1',
+              boxShadow: '0 2px 8px rgba(0, 0, 0, 0.12)',
               transition: 'all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)',
+              whiteSpace: 'nowrap',
             }}
           >
             <span>Book 2 Free Demos</span>
@@ -153,12 +165,17 @@ export default function Navbar({ onBookCallClick, onNavigateScreen }) {
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="mobile-nav-toggle"
             style={{
-              background: 'transparent',
-              border: '1px solid #E5E5E5',
+              background: '#F3F4F6',
+              border: '1px solid #E5E7EB',
               color: '#000000',
-              padding: '0.5rem',
+              height: '42px',
+              width: '42px',
               borderRadius: '9999px',
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
               cursor: 'pointer',
+              lineHeight: '1',
             }}
           >
             {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}

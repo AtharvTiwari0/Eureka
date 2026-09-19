@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Sparkles, Eye, CheckCircle2, ChevronDown, ChevronUp, Lightbulb, Zap } from 'lucide-react';
 
 export default function ScienceFormulaDecoder() {
-  const [expandedId, setExpandedId] = useState('nacl');
+  const [expandedId, setExpandedId] = useState(null);
 
   const concepts = [
     {

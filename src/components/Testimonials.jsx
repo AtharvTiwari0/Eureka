@@ -1,7 +1,9 @@
-import React from 'react';
-import { ShieldCheck, Star, Sparkles, Lock } from 'lucide-react';
+import React, { useState } from 'react';
+import { ShieldCheck, Star, Sparkles, Lock, ChevronDown, ChevronUp } from 'lucide-react';
 
 export default function Testimonials() {
+  const [showAllReviews, setShowAllReviews] = useState(false);
+
   const verifiedReviews = [
     {
       id: 1,
@@ -76,12 +78,12 @@ export default function Testimonials() {
           </div>
         </div>
 
-        {/* 6-Card Horizontal Grid Layout (No Search Bar) */}
+        {/* 6-Card Horizontal Grid Layout (Responsive with Mobile Toggle) */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.2rem' }} className="testimonials-6-grid">
-          {verifiedReviews.map((rev) => (
+          {verifiedReviews.map((rev, index) => (
             <div
               key={rev.id}
-              className="clay-card"
+              className={`clay-card ${!showAllReviews && index >= 2 ? 'mobile-review-hidden' : ''}`}
               style={{
                 padding: '1.4rem',
                 borderRadius: '20px',
@@ -122,6 +124,31 @@ export default function Testimonials() {
           ))}
         </div>
 
+        {/* Mobile Toggle Button (Show More / Show Less) */}
+        <div className="mobile-show-more-reviews-wrapper" style={{ marginTop: '1.25rem', textAlign: 'center' }}>
+          <button
+            onClick={() => setShowAllReviews(!showAllReviews)}
+            style={{
+              background: '#FFFFFF',
+              border: '1.5px solid #000000',
+              color: '#000000',
+              padding: '0.65rem 1.4rem',
+              borderRadius: '9999px',
+              fontSize: '0.88rem',
+              fontWeight: '700',
+              cursor: 'pointer',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.45rem',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.06)',
+              transition: 'all 0.2s ease',
+            }}
+          >
+            <span>{showAllReviews ? 'Show Less Reviews' : `Show More Reviews (${verifiedReviews.length - 2} More)`}</span>
+            {showAllReviews ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+          </button>
+        </div>
+
       </div>
 
       <style>{`
@@ -130,6 +157,10 @@ export default function Testimonials() {
         }
         @media (max-width: 600px) {
           .testimonials-6-grid { grid-template-columns: 1fr !important; }
+          .mobile-review-hidden { display: none !important; }
+        }
+        @media (min-width: 601px) {
+          .mobile-show-more-reviews-wrapper { display: none !important; }
         }
       `}</style>
     </section>

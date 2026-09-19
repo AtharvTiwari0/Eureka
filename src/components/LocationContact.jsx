@@ -54,37 +54,37 @@ export default function LocationContact() {
 
         {/* Contact Information Row */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.2rem' }} className="contact-cards-grid">
-          <div className="clay-card" style={{ padding: '1.4rem', borderRadius: '20px', display: 'flex', alignItems: 'center', gap: '1rem', background: '#FFFFFF' }}>
-            <div style={iconBoxStyle}>
-              <Phone size={22} color="var(--primary-blue)" />
+          <div className="clay-card" style={{ padding: '1.4rem', borderRadius: '20px', display: 'flex', alignItems: 'center', gap: '1rem', background: '#FFFFFF', border: '1px solid #E5E5E5' }}>
+            <div style={{ ...iconBoxStyle, background: '#F4F4F4' }}>
+              <Phone size={22} color="#000000" />
             </div>
             <div>
-              <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: '800' }}>Direct Phone</span>
-              <a href="tel:+919452184870" style={{ fontSize: '1.05rem', fontWeight: '800', color: 'var(--text-primary)', textDecoration: 'none', display: 'block', marginTop: '0.1rem' }}>
+              <span style={{ fontSize: '0.75rem', color: '#6F6F6F', textTransform: 'uppercase', fontWeight: '800' }}>Direct Phone</span>
+              <a href="tel:+919452184870" style={{ fontSize: '1.05rem', fontWeight: '800', color: '#000000', textDecoration: 'none', display: 'block', marginTop: '0.1rem' }}>
                 +91 9452184870
               </a>
             </div>
           </div>
 
-          <div className="clay-card" style={{ padding: '1.4rem', borderRadius: '20px', display: 'flex', alignItems: 'center', gap: '1rem', background: '#FFFFFF' }}>
-            <div style={{ ...iconBoxStyle, background: 'var(--accent-emerald-soft)' }}>
-              <Mail size={22} color="var(--accent-emerald)" />
+          <div className="clay-card" style={{ padding: '1.4rem', borderRadius: '20px', display: 'flex', alignItems: 'center', gap: '1rem', background: '#FFFFFF', border: '1px solid #E5E5E5' }}>
+            <div style={{ ...iconBoxStyle, background: '#ECFDF5' }}>
+              <Mail size={22} color="#059669" />
             </div>
             <div style={{ minWidth: 0 }}>
-              <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: '800' }}>Official Email</span>
-              <span style={{ fontSize: '0.95rem', fontWeight: '800', color: 'var(--text-primary)', display: 'block', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginTop: '0.1rem' }}>
+              <span style={{ fontSize: '0.75rem', color: '#6F6F6F', textTransform: 'uppercase', fontWeight: '800' }}>Official Email</span>
+              <span style={{ fontSize: '0.95rem', fontWeight: '800', color: '#000000', display: 'block', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginTop: '0.1rem' }}>
                 av7529365@gmail.com
               </span>
             </div>
           </div>
 
-          <div className="clay-card" style={{ padding: '1.4rem', borderRadius: '20px', display: 'flex', alignItems: 'center', gap: '1rem', background: '#FFFFFF' }}>
-            <div style={{ ...iconBoxStyle, background: 'var(--accent-amber-soft)' }}>
-              <Clock size={22} color="var(--accent-amber)" />
+          <div className="clay-card" style={{ padding: '1.4rem', borderRadius: '20px', display: 'flex', alignItems: 'center', gap: '1rem', background: '#FFFFFF', border: '1px solid #E5E5E5' }}>
+            <div style={{ ...iconBoxStyle, background: '#FFFBEB' }}>
+              <Clock size={22} color="#D97706" />
             </div>
             <div>
-              <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: '800' }}>Center Hours</span>
-              <span style={{ fontSize: '0.92rem', fontWeight: '800', color: 'var(--text-primary)', display: 'block', marginTop: '0.1rem' }}>
+              <span style={{ fontSize: '0.75rem', color: '#6F6F6F', textTransform: 'uppercase', fontWeight: '800' }}>Center Hours</span>
+              <span style={{ fontSize: '0.92rem', fontWeight: '800', color: '#000000', display: 'block', marginTop: '0.1rem' }}>
                 Mon - Sat (2:00 PM - 7:00 PM)
               </span>
             </div>
