@@ -9,14 +9,16 @@ export default function MeetTeacherScreen({ onBackToHome, onBookCallClick }) {
       
       {/* Top Navigation Bar */}
       <header
+        className="subscreen-header"
         style={{
           position: 'sticky',
           top: 0,
           zIndex: 50,
           background: 'rgba(255, 255, 255, 0.95)',
           backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
           borderBottom: '1px solid rgba(0, 0, 0, 0.08)',
-          padding: '1.2rem 2rem',
+          padding: '0.85rem 1.5rem',
         }}
       >
         <div
@@ -27,27 +29,29 @@ export default function MeetTeacherScreen({ onBackToHome, onBookCallClick }) {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
+            gap: '0.75rem',
           }}
         >
-          {/* Back to Home Button */}
+          {/* Back Button — Arrow Only */}
           <button
             onClick={onBackToHome}
             style={{
-              background: 'transparent',
-              border: 'none',
+              background: '#F3F4F6',
+              border: '1px solid #E5E7EB',
               cursor: 'pointer',
-              display: 'flex',
+              display: 'inline-flex',
               alignItems: 'center',
-              gap: '0.5rem',
-              color: '#6F6F6F',
-              fontSize: '0.92rem',
-              fontWeight: 500,
-              transition: 'color 0.2s ease',
+              justifyContent: 'center',
+              width: '40px',
+              height: '40px',
+              borderRadius: '9999px',
+              flexShrink: 0,
+              transition: 'background 0.2s ease',
             }}
-            className="subscreen-back-btn hover:text-black"
+            className="subscreen-back-btn"
+            title="Back to Home"
           >
             <ArrowLeft size={18} color="#000000" />
-            <span>Back to Home</span>
           </button>
 
           {/* Brand Logo */}
