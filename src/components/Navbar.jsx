@@ -61,6 +61,7 @@ export default function Navbar({ onBookCallClick, onNavigateScreen }) {
       }}
     >
       <div
+        className="navbar-main-container"
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -74,6 +75,7 @@ export default function Navbar({ onBookCallClick, onNavigateScreen }) {
         {/* Left: Brand Logo */}
         <div
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="navbar-brand-logo"
           style={{ display: 'flex', alignItems: 'center', gap: '0.2rem', cursor: 'pointer', height: '42px' }}
         >
           <span
@@ -93,7 +95,7 @@ export default function Navbar({ onBookCallClick, onNavigateScreen }) {
         </div>
 
         {/* Center/Right Menu: Minimalist "More Info v" Mega Dropdown & Black Pill CTA */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <div className="navbar-right-actions" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
           
           <nav className="desktop-nav-menu" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
             {/* More Info Dropdown Trigger */}
@@ -156,7 +158,8 @@ export default function Navbar({ onBookCallClick, onNavigateScreen }) {
               whiteSpace: 'nowrap',
             }}
           >
-            <span>Book 2 Free Demos</span>
+            <span className="cta-full-text">Book 2 Free Demos</span>
+            <span className="cta-short-text">Book Demo</span>
             <ArrowRight size={15} color="#FFFFFF" />
           </button>
 
@@ -499,6 +502,36 @@ export default function Navbar({ onBookCallClick, onNavigateScreen }) {
           .pitara-4grid {
             grid-template-columns: repeat(2, 1fr) !important;
           }
+        }
+
+        @media (max-width: 600px) {
+          .navbar-main-container {
+            padding: 0.65rem 0.85rem !important;
+          }
+          .navbar-brand-logo span {
+            font-size: 1.45rem !important;
+          }
+          .navbar-right-actions {
+            gap: 0.35rem !important;
+          }
+          .aethera-nav-cta {
+            padding: 0 0.75rem !important;
+            font-size: 0.78rem !important;
+            height: 38px !important;
+          }
+          .mobile-nav-toggle {
+            height: 38px !important;
+            width: 38px !important;
+          }
+        }
+
+        @media (max-width: 380px) {
+          .cta-full-text { display: none !important; }
+          .cta-short-text { display: inline !important; }
+        }
+
+        @media (min-width: 381px) {
+          .cta-short-text { display: none !important; }
         }
       `}</style>
     </header>
