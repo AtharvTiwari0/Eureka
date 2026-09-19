@@ -493,88 +493,221 @@ input, select, textarea {
   font-size: 16px !important;
 }
 
+/* =====================================================
+   NAVBAR RESPONSIVE SYSTEM
+   All breakpoints: 320px → 430px → 900px → desktop
+   ===================================================== */
+
+/* Make sure the sticky navbar header element itself has no extra padding */
+.eureka-main-navbar {
+  padding: 0 !important;
+}
+
+/* Tablet + Mobile: Adjust navbar inner container padding */
+@media (max-width: 900px) {
+  .navbar-main-container {
+    padding: 0.75rem 1rem !important;
+  }
+}
+
+/* Small Mobile (≤ 480px): Tighter navbar */
+@media (max-width: 480px) {
+  .navbar-main-container {
+    padding: 0.6rem 0.75rem !important;
+  }
+  .navbar-brand-logo span {
+    font-size: 1.55rem !important;
+  }
+  .navbar-right-actions {
+    gap: 0.4rem !important;
+  }
+  .aethera-nav-cta {
+    height: 38px !important;
+    padding: 0 0.85rem !important;
+    font-size: 0.82rem !important;
+    gap: 0.3rem !important;
+  }
+  .mobile-nav-toggle {
+    height: 38px !important;
+    width: 38px !important;
+  }
+}
+
+/* Very small phones (≤ 360px): Minimal text on CTA */
+@media (max-width: 360px) {
+  .cta-full-text { display: none !important; }
+  .cta-short-text { display: inline !important; }
+  .navbar-brand-logo span {
+    font-size: 1.4rem !important;
+  }
+  .aethera-nav-cta {
+    padding: 0 0.7rem !important;
+    font-size: 0.8rem !important;
+  }
+}
+
+@media (min-width: 361px) {
+  .cta-short-text { display: none !important; }
+}
+
+/* Mobile drawer menu: ensure it stays within viewport width */
+.navbar-mobile-drawer {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 1rem 0.75rem 1.25rem !important;
+}
+
+/* Pitara Mega Menu mobile layout */
 @media (max-width: 640px) {
-  /* Global header padding tuning */
-  header {
-    padding: 0.9rem 1rem !important;
+  .pitara-4grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.8rem !important;
+  }
+  .pitara-dropdown-wrapper {
+    width: calc(100vw - 1.5rem) !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    padding: 1.2rem 1rem !important;
+    border-radius: 18px !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* =====================================================
+   SUBSCREEN HEADERS (BookDemo, AskToSir, Batches etc.)
+   ===================================================== */
+.subscreen-header {
+  padding: 0.85rem 1.5rem !important;
+}
+
+@media (max-width: 640px) {
+  .subscreen-header {
+    padding: 0.65rem 0.85rem !important;
+  }
+  .subscreen-header-inner {
+    gap: 0.5rem !important;
+  }
+  .subscreen-back-btn {
+    padding: 0.4rem 0.5rem !important;
+    font-size: 0.82rem !important;
+    min-width: 0 !important;
+  }
+  .subscreen-back-btn .back-btn-text {
+    display: none !important;
+  }
+  .subscreen-badge {
+    padding: 0.3rem 0.55rem !important;
+    font-size: 0.72rem !important;
+    max-width: 140px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+  .subscreen-badge span {
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .subscreen-badge {
+    display: none !important;
+  }
+}
+
+/* =====================================================
+   FORMS — RESPONSIVE SYSTEM
+   Fixes: card overflow, input sizing, padding, buttons
+   ===================================================== */
+
+/* Ensure all inputs/selects/textareas are correctly box-sized */
+input, select, textarea {
+  box-sizing: border-box !important;
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+/* Form card fluid padding */
+.form-card-responsive {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+@media (max-width: 640px) {
+  /* Form card padding tuning */
+  .form-card-responsive {
+    padding: 1.5rem 1.1rem !important;
+    border-radius: 18px !important;
   }
 
-  /* Main container padding */
-  main {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
+  /* Main content area padding */
+  .form-main-content {
+    padding: 2rem 0.9rem 4rem 0.9rem !important;
   }
 
-  /* Grid layout fallbacks */
-  .method-grid-responsive {
+  /* Fee banner inside form */
+  .fee-banner-row {
+    flex-direction: column !important;
+    gap: 0.6rem !important;
+    align-items: flex-start !important;
+  }
+  .fee-banner-row > div:last-child {
+    text-align: left !important;
+  }
+
+  /* Batch option card rows */
+  .batch-option-row {
+    flex-wrap: wrap !important;
+    gap: 0.5rem !important;
+  }
+
+  /* Feature highlights grid below form */
+  .form-highlights-grid {
     grid-template-columns: 1fr !important;
     gap: 0.75rem !important;
   }
 
-  /* Button groups auto-wrap & full-width scaling */
-  button {
-    max-width: 100% !important;
-  }
-
-  .batch-card-header {
-    flex-direction: column !important;
-    align-items: stretch !important;
+  /* Form title heading */
+  .form-page-title h1 {
+    font-size: clamp(1.8rem, 7vw, 2.8rem) !important;
+    letter-spacing: -0.03em !important;
   }
 
   /* Prevent text clipping */
   h1 {
     font-size: clamp(2.1rem, 8vw, 3.5rem) !important;
   }
-
   h2 {
     font-size: clamp(1.6rem, 6vw, 2.5rem) !important;
   }
+}
 
-  /* Pitara Mega Menu mobile layout */
-  .pitara-4grid {
+@media (max-width: 400px) {
+  .form-card-responsive {
+    padding: 1.1rem 0.85rem !important;
+    border-radius: 14px !important;
+  }
+  .form-main-content {
+    padding: 1.5rem 0.6rem 3rem 0.6rem !important;
+  }
+}
+
+/* =====================================================
+   MISC RESPONSIVE FIXES
+   ===================================================== */
+
+@media (max-width: 640px) {
+  /* Grid layout fallbacks */
+  .method-grid-responsive {
     grid-template-columns: 1fr !important;
-    gap: 0.8rem !important;
+    gap: 0.75rem !important;
   }
 
-  .pitara-dropdown-wrapper {
-    width: calc(100% - 1.5rem) !important;
-    padding: 1.2rem 1rem !important;
-  }
-
-  /* Top Header CTA button tuning on mobile screens */
-  .aethera-nav-cta {
-    display: inline-flex !important;
-    padding: 0.45rem 0.85rem !important;
-    font-size: 0.78rem !important;
-    gap: 0.3rem !important;
-  }
-
-  /* Subscreen responsive header tuning */
-  .subscreen-header-inner {
-    padding: 0.7rem 0.85rem !important;
-  }
-
-  .subscreen-back-btn {
-    padding: 0.4rem 0.6rem !important;
-    font-size: 0.82rem !important;
-  }
-
-  .subscreen-back-btn span {
-    display: none !important;
-  }
-
-  .subscreen-cta-btn {
-    padding: 0.45rem 0.85rem !important;
-    font-size: 0.78rem !important;
-  }
-
-  .subscreen-cta-btn span {
-    font-size: 0.78rem !important;
-  }
-
-  .subscreen-badge {
-    padding: 0.35rem 0.65rem !important;
-    font-size: 0.75rem !important;
+  .batch-card-header {
+    flex-direction: column !important;
+    align-items: stretch !important;
   }
 
   /* Responsive teacher grid */

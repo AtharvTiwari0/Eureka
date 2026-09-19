@@ -7,14 +7,16 @@ export default function StudyMaterialsScreen({ onBackToHome, onNavigateToBookDem
       
       {/* Top Navigation Header */}
       <header
+        className="subscreen-header"
         style={{
           position: 'sticky',
           top: 0,
           zIndex: 50,
           background: 'rgba(255, 255, 255, 0.96)',
           backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
           borderBottom: '1px solid rgba(0, 0, 0, 0.08)',
-          padding: '1.1rem 2rem',
+          padding: '0.85rem 1.5rem',
         }}
       >
         <div
@@ -25,6 +27,7 @@ export default function StudyMaterialsScreen({ onBackToHome, onNavigateToBookDem
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
+            gap: '0.75rem',
           }}
         >
           <button
@@ -40,10 +43,12 @@ export default function StudyMaterialsScreen({ onBackToHome, onNavigateToBookDem
               color: '#000000',
               fontSize: '0.9rem',
               fontWeight: 600,
+              whiteSpace: 'nowrap',
+              flexShrink: 0,
             }}
           >
             <ArrowLeft size={18} color="#000000" />
-            <span>Back to Home</span>
+            <span className="back-btn-text">Back to Home</span>
           </button>
 
           <span
@@ -54,6 +59,7 @@ export default function StudyMaterialsScreen({ onBackToHome, onNavigateToBookDem
               fontFamily: "'Instrument Serif', Georgia, serif",
               color: '#000000',
               cursor: 'pointer',
+              flexShrink: 0,
             }}
           >
             Eureka
@@ -74,6 +80,8 @@ export default function StudyMaterialsScreen({ onBackToHome, onNavigateToBookDem
               display: 'flex',
               alignItems: 'center',
               gap: '0.4rem',
+              flexShrink: 0,
+              whiteSpace: 'nowrap',
             }}
           >
             <span>Book Demo</span>

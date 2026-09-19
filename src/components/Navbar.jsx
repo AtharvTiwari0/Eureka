@@ -45,6 +45,7 @@ export default function Navbar({ onBookCallClick, onNavigateScreen }) {
   return (
     <header
       ref={navRef}
+      className="eureka-main-navbar"
       style={{
         position: 'sticky',
         top: 0,
@@ -58,6 +59,7 @@ export default function Navbar({ onBookCallClick, onNavigateScreen }) {
         WebkitBackdropFilter: scrolled ? 'blur(12px)' : 'none',
         borderBottom: scrolled ? '1px solid rgba(0, 0, 0, 0.06)' : 'none',
         transition: 'all 0.3s ease',
+        padding: 0,
       }}
     >
       <div
@@ -346,16 +348,21 @@ export default function Navbar({ onBookCallClick, onNavigateScreen }) {
       {/* MOBILE DRAWER MENU */}
       {mobileMenuOpen && (
         <div
+          className="navbar-mobile-drawer"
           style={{
             background: 'rgba(255, 255, 255, 0.98)',
             backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)',
             borderBottom: '1px solid #E5E5E5',
-            padding: '1.4rem 1.2rem 1.6rem 1.2rem',
+            padding: '1rem 0.85rem 1.25rem 0.85rem',
             display: 'flex',
             flexDirection: 'column',
-            gap: '0.75rem',
+            gap: '0.65rem',
             boxShadow: '0 20px 40px rgba(0, 0, 0, 0.1)',
             animation: 'fadeIn 0.25s ease-out',
+            boxSizing: 'border-box',
+            width: '100%',
+            overflow: 'hidden',
           }}
         >
           <div style={{ fontSize: '0.75rem', fontWeight: '700', color: '#6F6F6F', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.2rem', paddingLeft: '0.3rem' }}>
@@ -488,50 +495,23 @@ export default function Navbar({ onBookCallClick, onNavigateScreen }) {
           box-shadow: 0 8px 24px rgba(255, 255, 255, 0.3) !important;
         }
 
-        @media (max-width: 900px) {
-          .desktop-nav-menu { display: none !important; }
-          .mobile-nav-toggle { display: block !important; }
-          .pitara-dropdown-wrapper { display: none !important; }
-        }
-
+        /* Desktop: show nav links, hide hamburger */
         @media (min-width: 901px) {
           .mobile-nav-toggle { display: none !important; }
         }
 
+        /* Mobile: hide desktop nav, show hamburger */
+        @media (max-width: 900px) {
+          .desktop-nav-menu { display: none !important; }
+          .mobile-nav-toggle { display: flex !important; }
+          .pitara-dropdown-wrapper { display: none !important; }
+        }
+
+        /* Tablet: 2-col pitara grid */
         @media (max-width: 1000px) {
           .pitara-4grid {
             grid-template-columns: repeat(2, 1fr) !important;
           }
-        }
-
-        @media (max-width: 600px) {
-          .navbar-main-container {
-            padding: 0.65rem 0.85rem !important;
-          }
-          .navbar-brand-logo span {
-            font-size: 1.45rem !important;
-          }
-          .navbar-right-actions {
-            gap: 0.35rem !important;
-          }
-          .aethera-nav-cta {
-            padding: 0 0.75rem !important;
-            font-size: 0.78rem !important;
-            height: 38px !important;
-          }
-          .mobile-nav-toggle {
-            height: 38px !important;
-            width: 38px !important;
-          }
-        }
-
-        @media (max-width: 380px) {
-          .cta-full-text { display: none !important; }
-          .cta-short-text { display: inline !important; }
-        }
-
-        @media (min-width: 381px) {
-          .cta-short-text { display: none !important; }
         }
       `}</style>
     </header>

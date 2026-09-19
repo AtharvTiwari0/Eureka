@@ -40,14 +40,16 @@ Please guide me. Thank you!`;
       
       {/* Top Navigation Header */}
       <header
+        className="subscreen-header"
         style={{
           position: 'sticky',
           top: 0,
           zIndex: 50,
           background: 'rgba(255, 255, 255, 0.96)',
           backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
           borderBottom: '1px solid rgba(0, 0, 0, 0.08)',
-          padding: '1.1rem 2rem',
+          padding: '0.85rem 1.5rem',
         }}
       >
         <div
@@ -58,6 +60,7 @@ Please guide me. Thank you!`;
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
+            gap: '0.75rem',
           }}
         >
           <button
@@ -73,10 +76,12 @@ Please guide me. Thank you!`;
               color: '#000000',
               fontSize: '0.9rem',
               fontWeight: 600,
+              whiteSpace: 'nowrap',
+              flexShrink: 0,
             }}
           >
             <ArrowLeft size={18} color="#000000" />
-            <span>Back to Home</span>
+            <span className="back-btn-text">Back to Home</span>
           </button>
 
           <span
@@ -87,6 +92,7 @@ Please guide me. Thank you!`;
               fontFamily: "'Instrument Serif', Georgia, serif",
               color: '#000000',
               cursor: 'pointer',
+              flexShrink: 0,
             }}
           >
             Eureka
@@ -94,7 +100,7 @@ Please guide me. Thank you!`;
 
           <div
             className="subscreen-badge"
-            style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: '#F4F4F4', padding: '0.4rem 0.9rem', borderRadius: '9999px', fontSize: '0.82rem', fontWeight: 600 }}
+            style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: '#F4F4F4', padding: '0.4rem 0.9rem', borderRadius: '9999px', fontSize: '0.82rem', fontWeight: 600, flexShrink: 0 }}
           >
             <Sparkles size={14} color="#000000" />
             <span>DIRECT TEACHER DOUBT CELL</span>
@@ -103,7 +109,7 @@ Please guide me. Thank you!`;
       </header>
 
       {/* Main Content Area */}
-      <main style={{ maxWidth: '64rem', margin: '0 auto', padding: '3.5rem 1.5rem 6rem 1.5rem' }}>
+      <main className="form-main-content" style={{ maxWidth: '64rem', margin: '0 auto', padding: '3.5rem 1.5rem 6rem 1.5rem' }}>
         
         {/* Page Title */}
         <div style={{ textAlign: 'center', maxWidth: '44rem', margin: '0 auto 3rem auto' }}>
@@ -149,6 +155,7 @@ Please guide me. Thank you!`;
 
         {/* Dedicated Query Card */}
         <div
+          className="form-card-responsive"
           style={{
             maxWidth: '640px',
             margin: '0 auto',
@@ -157,6 +164,7 @@ Please guide me. Thank you!`;
             borderRadius: '24px',
             padding: '2.5rem 2.2rem',
             boxShadow: '0 20px 50px rgba(0, 0, 0, 0.08)',
+            boxSizing: 'border-box',
           }}
         >
           <form onSubmit={handleSendWhatsApp} style={{ display: 'flex', flexDirection: 'column', gap: '1.4rem' }}>
@@ -254,9 +262,10 @@ Please guide me. Thank you!`;
 
         {/* Info Highlights */}
         <div
+          className="form-highlights-grid"
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
             gap: '1.5rem',
             maxWidth: '640px',
             margin: '3rem auto 0 auto',
