@@ -600,37 +600,38 @@ input, select, textarea {
 
 @media (max-width: 640px) {
   .subscreen-header {
-    padding: 0.65rem 0.85rem !important;
+    padding: 0.6rem 0.85rem !important;
   }
   .subscreen-header-inner {
     gap: 0.5rem !important;
   }
   .subscreen-back-btn {
     padding: 0.4rem 0.5rem !important;
-    font-size: 0.82rem !important;
+    font-size: 0.85rem !important;
     min-width: 0 !important;
+    flex-shrink: 0 !important;
   }
+  /* Hide back button text on all mobile — only show arrow */
   .subscreen-back-btn .back-btn-text {
     display: none !important;
   }
+  /* Hide right-side badge completely on all phones */
   .subscreen-badge {
-    padding: 0.3rem 0.55rem !important;
-    font-size: 0.72rem !important;
-    max-width: 140px !important;
-    white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
+    display: none !important;
   }
-  .subscreen-badge span {
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
+  /* Keep CTA button compact */
+  .subscreen-cta-btn {
+    padding: 0.45rem 0.85rem !important;
+    font-size: 0.8rem !important;
+    flex-shrink: 0 !important;
     white-space: nowrap !important;
   }
 }
 
-@media (max-width: 400px) {
+/* Show badge on tablet and above */
+@media (min-width: 641px) {
   .subscreen-badge {
-    display: none !important;
+    display: flex !important;
   }
 }
 
