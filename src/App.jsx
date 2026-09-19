@@ -6,7 +6,6 @@ import AboutTeacher from './components/AboutTeacher';
 import Testimonials from './components/Testimonials';
 import LocationContact from './components/LocationContact';
 import Footer from './components/Footer';
-import MobileBottomNav from './components/MobileBottomNav';
 import MeetTeacherScreen from './components/MeetTeacherScreen';
 import BatchesScreen from './components/BatchesScreen';
 import BookDemoScreen from './components/BookDemoScreen';
@@ -27,61 +26,46 @@ export default function App() {
 
   if (activeScreen === 'study-materials') {
     return (
-      <>
-        <StudyMaterialsScreen
-          onBackToHome={() => navigateTo('home')}
-          onNavigateToBookDemo={(batch) => navigateTo('book-demo', batch)}
-        />
-        <MobileBottomNav activeScreen={activeScreen} onNavigate={(screen) => navigateTo(screen)} />
-      </>
+      <StudyMaterialsScreen
+        onBackToHome={() => navigateTo('home')}
+        onNavigateToBookDemo={(batch) => navigateTo('book-demo', batch)}
+      />
     );
   }
 
   if (activeScreen === 'ask-to-sir') {
     return (
-      <>
-        <AskToSirScreen
-          onBackToHome={() => navigateTo('home')}
-        />
-        <MobileBottomNav activeScreen={activeScreen} onNavigate={(screen) => navigateTo(screen)} />
-      </>
+      <AskToSirScreen
+        onBackToHome={() => navigateTo('home')}
+      />
     );
   }
 
   if (activeScreen === 'book-demo') {
     return (
-      <>
-        <BookDemoScreen
-          initialBatch={selectedBatch}
-          onBackToBatches={() => navigateTo('batches')}
-          onBackToHome={() => navigateTo('home')}
-        />
-        <MobileBottomNav activeScreen={activeScreen} onNavigate={(screen) => navigateTo(screen)} />
-      </>
+      <BookDemoScreen
+        initialBatch={selectedBatch}
+        onBackToBatches={() => navigateTo('batches')}
+        onBackToHome={() => navigateTo('home')}
+      />
     );
   }
 
   if (activeScreen === 'batches') {
     return (
-      <>
-        <BatchesScreen
-          onBackToHome={() => navigateTo('home')}
-          onNavigateToBookDemo={(batchName) => navigateTo('book-demo', batchName)}
-        />
-        <MobileBottomNav activeScreen={activeScreen} onNavigate={(screen) => navigateTo(screen)} />
-      </>
+      <BatchesScreen
+        onBackToHome={() => navigateTo('home')}
+        onNavigateToBookDemo={(batchName) => navigateTo('book-demo', batchName)}
+      />
     );
   }
 
   if (activeScreen === 'meet-teacher') {
     return (
-      <>
-        <MeetTeacherScreen
-          onBackToHome={() => navigateTo('home')}
-          onBookCallClick={(batch) => navigateTo('book-demo', batch)}
-        />
-        <MobileBottomNav activeScreen={activeScreen} onNavigate={(screen) => navigateTo(screen)} />
-      </>
+      <MeetTeacherScreen
+        onBackToHome={() => navigateTo('home')}
+        onBookCallClick={(batch) => navigateTo('book-demo', batch)}
+      />
     );
   }
 
@@ -132,9 +116,6 @@ export default function App() {
 
       {/* Blinkit-Style Giant Blended Typography Footer */}
       <Footer />
-
-      {/* Sticky Mobile Floating Dock */}
-      <MobileBottomNav activeScreen={activeScreen} onNavigate={(screen) => navigateTo(screen)} />
     </div>
   );
 }

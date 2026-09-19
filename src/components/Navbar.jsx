@@ -327,18 +327,22 @@ export default function Navbar({ onBookCallClick, onNavigateScreen }) {
       {mobileMenuOpen && (
         <div
           style={{
-            background: '#0B1120',
-            borderBottom: '1px solid rgba(56, 189, 248, 0.2)',
-            padding: '1.2rem 1.5rem',
+            background: 'rgba(255, 255, 255, 0.98)',
+            backdropFilter: 'blur(16px)',
+            borderBottom: '1px solid #E5E5E5',
+            padding: '1.4rem 1.2rem 1.6rem 1.2rem',
             display: 'flex',
             flexDirection: 'column',
-            gap: '0.9rem',
+            gap: '0.75rem',
+            boxShadow: '0 20px 40px rgba(0, 0, 0, 0.1)',
+            animation: 'fadeIn 0.25s ease-out',
           }}
         >
-          <div style={{ fontSize: '0.75rem', fontWeight: '800', color: '#38BDF8', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.2rem' }}>
-            More Info Links
+          <div style={{ fontSize: '0.75rem', fontWeight: '700', color: '#6F6F6F', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.2rem', paddingLeft: '0.3rem' }}>
+            Navigation Menu
           </div>
 
+          {/* Item 1: Meet Teacher */}
           <button
             onClick={() => {
               setMobileMenuOpen(false);
@@ -346,10 +350,16 @@ export default function Navbar({ onBookCallClick, onNavigateScreen }) {
             }}
             style={mobileLinkStyle}
           >
-            <GraduationCap size={18} color="#000000" />
-            <span>Meet Teacher</span>
+            <div style={mobileIconBoxStyle}>
+              <GraduationCap size={20} color="#000000" />
+            </div>
+            <div>
+              <div style={{ fontSize: '0.95rem', fontWeight: 700, color: '#000000' }}>Meet Teacher</div>
+              <div style={{ fontSize: '0.78rem', color: '#6F6F6F', marginTop: '0.1rem' }}>Abhishek Sir Credentials & Gold Medal</div>
+            </div>
           </button>
 
+          {/* Item 2: Batches */}
           <button
             onClick={() => {
               setMobileMenuOpen(false);
@@ -357,10 +367,16 @@ export default function Navbar({ onBookCallClick, onNavigateScreen }) {
             }}
             style={mobileLinkStyle}
           >
-            <BookOpen size={18} color="#000000" />
-            <span>Batches</span>
+            <div style={mobileIconBoxStyle}>
+              <BookOpen size={20} color="#000000" />
+            </div>
+            <div>
+              <div style={{ fontSize: '0.95rem', fontWeight: 700, color: '#000000' }}>Batches & Syllabus</div>
+              <div style={{ fontSize: '0.78rem', color: '#6F6F6F', marginTop: '0.1rem' }}>Class 10th Board, Class 9th & Middle School</div>
+            </div>
           </button>
 
+          {/* Item 3: Study Materials */}
           <button
             onClick={() => {
               setMobileMenuOpen(false);
@@ -368,10 +384,16 @@ export default function Navbar({ onBookCallClick, onNavigateScreen }) {
             }}
             style={mobileLinkStyle}
           >
-            <FileText size={18} color="#38BDF8" />
-            <span>Study Materials</span>
+            <div style={mobileIconBoxStyle}>
+              <FileText size={20} color="#000000" />
+            </div>
+            <div>
+              <div style={{ fontSize: '0.95rem', fontWeight: 700, color: '#000000' }}>Study Materials</div>
+              <div style={{ fontSize: '0.78rem', color: '#6F6F6F', marginTop: '0.1rem' }}>NCERT Formula Cheat-Sheets & Handouts</div>
+            </div>
           </button>
 
+          {/* Item 4: Ask to Sir */}
           <button
             onClick={() => {
               setMobileMenuOpen(false);
@@ -379,30 +401,38 @@ export default function Navbar({ onBookCallClick, onNavigateScreen }) {
             }}
             style={mobileLinkStyle}
           >
-            <MessageSquare size={18} color="#38BDF8" />
-            <span>Ask to Sir</span>
+            <div style={mobileIconBoxStyle}>
+              <MessageSquare size={20} color="#000000" />
+            </div>
+            <div>
+              <div style={{ fontSize: '0.95rem', fontWeight: 700, color: '#000000' }}>Ask to Sir</div>
+              <div style={{ fontSize: '0.78rem', color: '#6F6F6F', marginTop: '0.1rem' }}>1-on-1 Direct WhatsApp Academic Doubt Cell</div>
+            </div>
           </button>
 
+          {/* Mobile Drawer CTA Button */}
           <button
             onClick={() => handleSelectBatch('Class 10th Science Board Special')}
             style={{
               width: '100%',
-              padding: '0.8rem',
+              padding: '0.9rem',
               borderRadius: '9999px',
-              background: 'linear-gradient(135deg, #F4F0EA 0%, #FFFFFF 100%)',
-              color: '#0F172A',
-              fontWeight: '800',
-              fontSize: '0.9rem',
+              background: '#000000',
+              color: '#FFFFFF',
+              fontWeight: '600',
+              fontSize: '0.95rem',
               border: 'none',
-              marginTop: '0.6rem',
+              marginTop: '0.5rem',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               gap: '0.5rem',
+              boxShadow: '0 6px 18px rgba(0,0,0,0.15)',
+              cursor: 'pointer',
             }}
           >
             <span>Book 2 Free Demos</span>
-            <ArrowRight size={16} />
+            <ArrowRight size={16} color="#FFFFFF" />
           </button>
         </div>
       )}
@@ -459,44 +489,38 @@ export default function Navbar({ onBookCallClick, onNavigateScreen }) {
 }
 
 const pitaraCardStyle = {
-  background: '#FFFFFF',
-  border: '1px solid #E2E8F0',
-  borderRadius: '18px',
-  padding: '1.25rem 1.1rem',
-  cursor: 'pointer',
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'space-between',
-  minHeight: '185px',
+  textDecoration: 'none',
+};
+
+const pitaraTitleStyle = {
+  fontSize: '1.05rem',
+  fontWeight: '800',
+  color: '#0F172A',
+  margin: '0 0 0.35rem 0',
+  fontFamily: "'Inter', sans-serif",
+};
+
+const pitaraDescStyle = {
+  fontSize: '0.84rem',
+  color: '#64748B',
+  lineHeight: '1.45',
+  margin: 0,
+  fontWeight: '500',
+  fontFamily: "'Inter', sans-serif",
 };
 
 const iconBadgeStyle = (color, bg) => ({
-  width: '42px',
-  height: '42px',
+  width: '44px',
+  height: '44px',
   borderRadius: '12px',
   background: bg,
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  marginBottom: '0.4rem',
 });
 
-const pitaraTitleStyle = {
-  fontSize: '1rem',
-  fontWeight: '800',
-  color: '#0F172A',
-  marginBottom: '0.35rem',
-  letterSpacing: '-0.01em',
-};
-
-const pitaraDescStyle = {
-  fontSize: '0.8rem',
-  color: '#64748B',
-  lineHeight: '1.45',
-};
-
 const pitaraActionStyle = (color) => ({
-  fontSize: '0.78rem',
+  fontSize: '0.82rem',
   fontWeight: '800',
   color: color,
   display: 'flex',
@@ -506,17 +530,29 @@ const pitaraActionStyle = (color) => ({
 });
 
 const mobileLinkStyle = {
-  background: 'rgba(255, 255, 255, 0.05)',
-  border: '1px solid rgba(255, 255, 255, 0.1)',
-  borderRadius: '12px',
-  color: '#F8FAFC',
+  background: '#F8FAFC',
+  border: '1px solid #E5E5E5',
+  borderRadius: '16px',
+  color: '#000000',
   fontSize: '0.92rem',
-  fontWeight: '700',
+  fontWeight: '600',
   textAlign: 'left',
-  padding: '0.75rem 1rem',
+  padding: '0.85rem 1rem',
   cursor: 'pointer',
   display: 'flex',
   alignItems: 'center',
-  gap: '0.75rem',
+  gap: '0.85rem',
+  transition: 'all 0.2s ease',
 };
 
+const mobileIconBoxStyle = {
+  width: '38px',
+  height: '38px',
+  borderRadius: '10px',
+  background: '#FFFFFF',
+  border: '1px solid #E5E5E5',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  flexShrink: 0,
+};

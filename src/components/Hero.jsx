@@ -128,7 +128,7 @@ export default function Hero({ onBookCallClick }) {
         <h1
           className="animate-fade-rise"
           style={{
-            fontSize: 'clamp(2.5rem, 5.5vw, 5.2rem)',
+            fontSize: 'clamp(2.1rem, 5.5vw, 5.2rem)',
             fontFamily: "'Instrument Serif', Georgia, serif",
             fontWeight: 400,
             lineHeight: 1.05,

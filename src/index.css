@@ -541,9 +541,12 @@ input, select, textarea {
     padding: 1.2rem 1rem !important;
   }
 
-  /* Desktop CTA button hidden on mobile top header (handled by bottom floating dock) */
+  /* Top Header CTA button tuning on mobile screens */
   .aethera-nav-cta {
-    display: none !important;
+    display: inline-flex !important;
+    padding: 0.45rem 0.85rem !important;
+    font-size: 0.78rem !important;
+    gap: 0.3rem !important;
   }
 
   /* Subscreen responsive header tuning */
@@ -580,6 +583,24 @@ input, select, textarea {
     gap: 2rem !important;
   }
 }
+
+/* 
+  =====================================================
+  ULTRA-WIDE SCREEN CONTAINER CONSTRAINTS (1600px - 2560px+)
+  =====================================================
+*/
+@media (min-width: 1600px) {
+  .container {
+    max-width: 1400px !important;
+  }
+}
+
+@media (min-width: 2200px) {
+  .container {
+    max-width: 1600px !important;
+  }
+}
+
 
 
 
