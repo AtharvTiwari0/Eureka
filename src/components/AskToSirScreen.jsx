@@ -51,6 +51,7 @@ Please guide me. Thank you!`;
         }}
       >
         <div
+          className="subscreen-header-inner"
           style={{
             maxWidth: '80rem',
             margin: '0 auto',
@@ -61,6 +62,7 @@ Please guide me. Thank you!`;
         >
           <button
             onClick={onBackToHome}
+            className="subscreen-back-btn"
             style={{
               background: 'transparent',
               border: 'none',
@@ -90,7 +92,10 @@ Please guide me. Thank you!`;
             Eureka
           </span>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: '#F4F4F4', padding: '0.4rem 0.9rem', borderRadius: '9999px', fontSize: '0.82rem', fontWeight: 600 }}>
+          <div
+            className="subscreen-badge"
+            style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: '#F4F4F4', padding: '0.4rem 0.9rem', borderRadius: '9999px', fontSize: '0.82rem', fontWeight: 600 }}
+          >
             <Sparkles size={14} color="#000000" />
             <span>DIRECT TEACHER DOUBT CELL</span>
           </div>

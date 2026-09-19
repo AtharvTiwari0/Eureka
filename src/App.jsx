@@ -27,46 +27,61 @@ export default function App() {
 
   if (activeScreen === 'study-materials') {
     return (
-      <StudyMaterialsScreen
-        onBackToHome={() => navigateTo('home')}
-        onNavigateToBookDemo={(batch) => navigateTo('book-demo', batch)}
-      />
+      <>
+        <StudyMaterialsScreen
+          onBackToHome={() => navigateTo('home')}
+          onNavigateToBookDemo={(batch) => navigateTo('book-demo', batch)}
+        />
+        <MobileBottomNav activeScreen={activeScreen} onNavigate={(screen) => navigateTo(screen)} />
+      </>
     );
   }
 
   if (activeScreen === 'ask-to-sir') {
     return (
-      <AskToSirScreen
-        onBackToHome={() => navigateTo('home')}
-      />
+      <>
+        <AskToSirScreen
+          onBackToHome={() => navigateTo('home')}
+        />
+        <MobileBottomNav activeScreen={activeScreen} onNavigate={(screen) => navigateTo(screen)} />
+      </>
     );
   }
 
   if (activeScreen === 'book-demo') {
     return (
-      <BookDemoScreen
-        initialBatch={selectedBatch}
-        onBackToBatches={() => navigateTo('batches')}
-        onBackToHome={() => navigateTo('home')}
-      />
+      <>
+        <BookDemoScreen
+          initialBatch={selectedBatch}
+          onBackToBatches={() => navigateTo('batches')}
+          onBackToHome={() => navigateTo('home')}
+        />
+        <MobileBottomNav activeScreen={activeScreen} onNavigate={(screen) => navigateTo(screen)} />
+      </>
     );
   }
 
   if (activeScreen === 'batches') {
     return (
-      <BatchesScreen
-        onBackToHome={() => navigateTo('home')}
-        onNavigateToBookDemo={(batchName) => navigateTo('book-demo', batchName)}
-      />
+      <>
+        <BatchesScreen
+          onBackToHome={() => navigateTo('home')}
+          onNavigateToBookDemo={(batchName) => navigateTo('book-demo', batchName)}
+        />
+        <MobileBottomNav activeScreen={activeScreen} onNavigate={(screen) => navigateTo(screen)} />
+      </>
     );
   }
 
   if (activeScreen === 'meet-teacher') {
     return (
-      <MeetTeacherScreen
-        onBackToHome={() => navigateTo('home')}
-        onBookCallClick={(batch) => navigateTo('book-demo', batch)}
-      />
+      <>
+        <MeetTeacherScreen
+          onBackToHome={() => navigateTo('home')}
+          onBookCallClick={(batch) => navigateTo('book-demo', batch)}
+        />
+        <MobileBottomNav activeScreen={activeScreen} onNavigate={(screen) => navigateTo(screen)} />
+      </>
     );
   }
 

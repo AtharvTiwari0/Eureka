@@ -20,6 +20,7 @@ export default function MeetTeacherScreen({ onBackToHome, onBookCallClick }) {
         }}
       >
         <div
+          className="subscreen-header-inner"
           style={{
             maxWidth: '80rem',
             margin: '0 auto',
@@ -43,7 +44,7 @@ export default function MeetTeacherScreen({ onBackToHome, onBookCallClick }) {
               fontWeight: 500,
               transition: 'color 0.2s ease',
             }}
-            className="hover:text-black"
+            className="subscreen-back-btn hover:text-black"
           >
             <ArrowLeft size={18} color="#000000" />
             <span>Back to Home</span>
@@ -66,6 +67,7 @@ export default function MeetTeacherScreen({ onBackToHome, onBookCallClick }) {
           {/* Book Demo CTA Button */}
           <button
             onClick={() => onBookCallClick('Class 10th Science Board Special')}
+            className="subscreen-cta-btn"
             style={{
               background: '#000000',
               color: '#FFFFFF',

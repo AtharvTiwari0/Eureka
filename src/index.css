@@ -540,6 +540,46 @@ input, select, textarea {
     width: calc(100% - 1.5rem) !important;
     padding: 1.2rem 1rem !important;
   }
+
+  /* Desktop CTA button hidden on mobile top header (handled by bottom floating dock) */
+  .aethera-nav-cta {
+    display: none !important;
+  }
+
+  /* Subscreen responsive header tuning */
+  .subscreen-header-inner {
+    padding: 0.7rem 0.85rem !important;
+  }
+
+  .subscreen-back-btn {
+    padding: 0.4rem 0.6rem !important;
+    font-size: 0.82rem !important;
+  }
+
+  .subscreen-back-btn span {
+    display: none !important;
+  }
+
+  .subscreen-cta-btn {
+    padding: 0.45rem 0.85rem !important;
+    font-size: 0.78rem !important;
+  }
+
+  .subscreen-cta-btn span {
+    font-size: 0.78rem !important;
+  }
+
+  .subscreen-badge {
+    padding: 0.35rem 0.65rem !important;
+    font-size: 0.75rem !important;
+  }
+
+  /* Responsive teacher grid */
+  .teacher-grid-responsive {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
 }
+
 
 

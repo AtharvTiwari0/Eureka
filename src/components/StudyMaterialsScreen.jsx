@@ -18,6 +18,7 @@ export default function StudyMaterialsScreen({ onBackToHome, onNavigateToBookDem
         }}
       >
         <div
+          className="subscreen-header-inner"
           style={{
             maxWidth: '80rem',
             margin: '0 auto',
@@ -28,6 +29,7 @@ export default function StudyMaterialsScreen({ onBackToHome, onNavigateToBookDem
         >
           <button
             onClick={onBackToHome}
+            className="subscreen-back-btn"
             style={{
               background: 'transparent',
               border: 'none',
@@ -59,6 +61,7 @@ export default function StudyMaterialsScreen({ onBackToHome, onNavigateToBookDem
 
           <button
             onClick={() => onNavigateToBookDemo && onNavigateToBookDemo('Class 10th Science Board Special')}
+            className="subscreen-cta-btn"
             style={{
               background: '#000000',
               color: '#FFFFFF',

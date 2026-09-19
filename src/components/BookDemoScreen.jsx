@@ -55,6 +55,7 @@ Please confirm my Demo Class slot. Thank you!`;
         }}
       >
         <div
+          className="subscreen-header-inner"
           style={{
             maxWidth: '80rem',
             margin: '0 auto',
@@ -66,6 +67,7 @@ Please confirm my Demo Class slot. Thank you!`;
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
             <button
               onClick={onBackToBatches || onBackToHome}
+              className="subscreen-back-btn"
               style={{
                 background: 'transparent',
                 border: 'none',
@@ -96,7 +98,10 @@ Please confirm my Demo Class slot. Thank you!`;
             Eureka
           </span>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: '#F4F4F4', padding: '0.4rem 0.9rem', borderRadius: '9999px', fontSize: '0.82rem', fontWeight: 600 }}>
+          <div
+            className="subscreen-badge"
+            style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: '#F4F4F4', padding: '0.4rem 0.9rem', borderRadius: '9999px', fontSize: '0.82rem', fontWeight: 600 }}
+          >
             <Sparkles size={14} color="#000000" />
             <span>2 FREE DEMO CLASSES</span>
           </div>
