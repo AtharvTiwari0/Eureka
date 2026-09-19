@@ -57,6 +57,7 @@ export default function Hero({ onBookCallClick }) {
 
   return (
     <section
+      className="hero-section-responsive"
       style={{
         position: 'relative',
         minHeight: '75vh',
@@ -108,6 +109,7 @@ export default function Hero({ onBookCallClick }) {
 
       {/* Hero Content Section (z-10) */}
       <div
+        className="hero-content-responsive"
         style={{
           position: 'relative',
           zIndex: 10,
@@ -126,7 +128,7 @@ export default function Hero({ onBookCallClick }) {
       >
         {/* Main Headline */}
         <h1
-          className="animate-fade-rise"
+          className="animate-fade-rise hero-heading-responsive"
           style={{
             fontSize: 'clamp(2.1rem, 5.5vw, 5.2rem)',
             fontFamily: "'Instrument Serif', Georgia, serif",

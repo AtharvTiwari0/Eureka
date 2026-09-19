@@ -79,14 +79,16 @@ export default function BatchesScreen({ onBackToHome, onNavigateToBookDemo }) {
       
       {/* Top Navigation Header */}
       <header
+        className="subscreen-header"
         style={{
           position: 'sticky',
           top: 0,
           zIndex: 50,
           background: 'rgba(255, 255, 255, 0.95)',
           backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
           borderBottom: '1px solid rgba(0, 0, 0, 0.08)',
-          padding: '1.2rem 2rem',
+          padding: '0.85rem 1.5rem',
         }}
       >
         <div
@@ -97,6 +99,7 @@ export default function BatchesScreen({ onBackToHome, onNavigateToBookDemo }) {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
+            gap: '0.75rem',
           }}
         >
           <button
@@ -112,10 +115,12 @@ export default function BatchesScreen({ onBackToHome, onNavigateToBookDemo }) {
               color: '#6F6F6F',
               fontSize: '0.92rem',
               fontWeight: 500,
+              whiteSpace: 'nowrap',
+              flexShrink: 0,
             }}
           >
             <ArrowLeft size={18} color="#000000" />
-            <span>Back to Home</span>
+            <span className="back-btn-text">Back to Home</span>
           </button>
 
           <span
@@ -126,6 +131,7 @@ export default function BatchesScreen({ onBackToHome, onNavigateToBookDemo }) {
               fontFamily: "'Instrument Serif', Georgia, serif",
               color: '#000000',
               cursor: 'pointer',
+              flexShrink: 0,
             }}
           >
             Eureka
@@ -146,6 +152,8 @@ export default function BatchesScreen({ onBackToHome, onNavigateToBookDemo }) {
               display: 'flex',
               alignItems: 'center',
               gap: '0.4rem',
+              flexShrink: 0,
+              whiteSpace: 'nowrap',
             }}
           >
             <span>Book Demo</span>
@@ -155,7 +163,7 @@ export default function BatchesScreen({ onBackToHome, onNavigateToBookDemo }) {
       </header>
 
       {/* Main Content Area */}
-      <main style={{ maxWidth: '80rem', margin: '0 auto', padding: '3.5rem 2rem 6rem 2rem' }}>
+      <main className="batches-main-content" style={{ maxWidth: '80rem', margin: '0 auto', padding: '3.5rem 2rem 6rem 2rem' }}>
         
         {/* Page Title Header */}
         <div style={{ textAlign: 'center', maxWidth: '48rem', margin: '0 auto 3rem auto' }}>
@@ -201,6 +209,7 @@ export default function BatchesScreen({ onBackToHome, onNavigateToBookDemo }) {
 
         {/* 3 BATCH NAVIGATION TABS */}
         <div
+          className="batch-tabs-row"
           style={{
             display: 'flex',
             alignItems: 'center',
@@ -239,6 +248,7 @@ export default function BatchesScreen({ onBackToHome, onNavigateToBookDemo }) {
 
           return (
             <div
+              className="batches-main-card"
               style={{
                 maxWidth: '920px',
                 margin: '0 auto',
@@ -247,6 +257,7 @@ export default function BatchesScreen({ onBackToHome, onNavigateToBookDemo }) {
                 borderRadius: '24px',
                 padding: '2.5rem',
                 boxShadow: '0 20px 50px rgba(0, 0, 0, 0.08)',
+                boxSizing: 'border-box',
               }}
             >
               {/* Batch Card Header */}
@@ -362,7 +373,7 @@ export default function BatchesScreen({ onBackToHome, onNavigateToBookDemo }) {
               )}
 
               {/* Action Buttons: Explore Details + Redirect to Dedicated Booking Screen */}
-              <div style={{ display: 'flex', gap: '1.2rem', flexWrap: 'wrap' }}>
+              <div className="batches-action-row" style={{ display: 'flex', gap: '1.2rem', flexWrap: 'wrap' }}>
                 
                 <button
                   onClick={() => setSelectedExploreBatch(isExplored ? null : currentBatch.id)}

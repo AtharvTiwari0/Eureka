@@ -23,7 +23,8 @@ export default function LocationContact() {
 
         {/* Large Prominent Full-Width Map Card */}
         <div className="clay-card" style={{ padding: '1.2rem', borderRadius: '28px', background: '#FFFFFF', marginBottom: '1.8rem', boxShadow: 'var(--clay-shadow-md)' }}>
-          <div style={{ width: '100%', height: '480px', borderRadius: '20px', overflow: 'hidden', border: '1px solid var(--border-light)' }}>
+        {/* Large Map Iframe */}
+          <div className="location-map-iframe-wrapper">
             <iframe
               title="Eureka Classes Location Map"
               src={mapEmbedUrl}
@@ -36,7 +37,7 @@ export default function LocationContact() {
             />
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '1.2rem', padding: '0 0.5rem', flexWrap: 'wrap', gap: '0.8rem' }}>
+          <div className="location-map-footer">
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-muted)', fontSize: '0.9rem', fontWeight: '600' }}>
               <Navigation size={16} color="var(--primary-blue)" /> Coordinates: 25.987894, 79.462561 (Orai, UP)
             </div>
@@ -45,7 +46,7 @@ export default function LocationContact() {
               target="_blank"
               rel="noreferrer"
               className="btn-clay-primary"
-              style={{ padding: '0.6rem 1.4rem', fontSize: '0.86rem', textDecoration: 'none' }}
+              style={{ padding: '0.6rem 1.4rem', fontSize: '0.86rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
             >
               Open In Google Maps <ExternalLink size={15} />
             </a>

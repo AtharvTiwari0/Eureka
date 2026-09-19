@@ -14,7 +14,7 @@ export default function Footer() {
       <div className="container">
         
         {/* Quick Footer Navigation Row */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.5rem' }}>
+        <div className="footer-brand-row" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.5rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
             <div
               style={{

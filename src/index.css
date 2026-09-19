@@ -27,6 +27,24 @@
   --text-muted: #999999;
 
   --border-light: #E5E5E5;
+
+  /* Accent colors used in components */
+  --accent-emerald: #059669;
+  --accent-emerald-soft: #ECFDF5;
+  --accent-amber: #D97706;
+  --accent-amber-soft: #FFFBEB;
+  --accent-blue: #2563EB;
+  --accent-blue-soft: #EFF6FF;
+
+  /* Border radius scale */
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-full: 9999px;
+
+  /* Clay morphic shadow scale */
+  --clay-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+  --clay-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+  --clay-shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.12), 0 8px 20px rgba(0, 0, 0, 0.06);
 }
 
 /* Animations */
@@ -734,6 +752,206 @@ input, select, textarea {
   }
 }
 
+/*
+  =====================================================
+  HERO SECTION RESPONSIVE
+  =====================================================
+*/
+@media (max-width: 640px) {
+  /* Hero section reduce min-height on small phones */
+  .hero-section-responsive {
+    min-height: 65vh !important;
+  }
 
+  /* Hero heading letter-spacing fix for small screens */
+  .hero-heading-responsive {
+    letter-spacing: -0.5px !important;
+  }
 
+  /* Hero content area padding */
+  .hero-content-responsive {
+    padding-top: 1.8rem !important;
+    padding-bottom: 2.5rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
 
+@media (max-width: 380px) {
+  .hero-content-responsive {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+}
+
+/*
+  =====================================================
+  LOCATION MAP — RESPONSIVE HEIGHT
+  =====================================================
+*/
+.location-map-iframe-wrapper {
+  width: 100%;
+  height: 480px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+}
+
+@media (max-width: 768px) {
+  .location-map-iframe-wrapper {
+    height: 320px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .location-map-iframe-wrapper {
+    height: 260px !important;
+    border-radius: 14px !important;
+  }
+}
+
+/* Map footer row: Coordinates + Open Maps button */
+.location-map-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.2rem;
+  padding: 0 0.5rem;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+@media (max-width: 480px) {
+  .location-map-footer {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.75rem !important;
+  }
+  .location-map-footer a {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}
+
+/*
+  =====================================================
+  BATCHES SCREEN — RESPONSIVE FIXES
+  =====================================================
+*/
+.batches-main-content {
+  padding: 3.5rem 2rem 6rem 2rem;
+}
+
+.batches-main-card {
+  padding: 2.5rem;
+  box-sizing: border-box;
+}
+
+.batches-action-row {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 640px) {
+  .batches-main-content {
+    padding: 2rem 1rem 4rem 1rem !important;
+  }
+
+  .batches-main-card {
+    padding: 1.4rem 1.1rem !important;
+    border-radius: 18px !important;
+  }
+
+  .batches-action-row {
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+  }
+
+  .batches-action-row button {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  /* Tab buttons full-width stack */
+  .batch-tabs-row {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.5rem !important;
+  }
+
+  .batch-tabs-row button {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .batches-main-card {
+    padding: 1.1rem 0.85rem !important;
+  }
+  .batches-main-content {
+    padding: 1.5rem 0.7rem 3rem 0.7rem !important;
+  }
+}
+
+/*
+  =====================================================
+  ABOUT TEACHER CARD — RESPONSIVE PADDING
+  =====================================================
+*/
+@media (max-width: 640px) {
+  .about-teacher-card {
+    padding: 1.3rem 1.1rem !important;
+    border-radius: 18px !important;
+  }
+}
+
+/*
+  =====================================================
+  FOOTER — RESPONSIVE FIX
+  =====================================================
+*/
+@media (max-width: 480px) {
+  .footer-brand-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.75rem !important;
+  }
+}
+
+/*
+  =====================================================
+  GLOBAL POLISH: Touch targets, tap spacing, focus states
+  =====================================================
+*/
+/* Ensure all interactive buttons have min touch target */
+button {
+  min-height: 44px;
+}
+
+/* Except tiny icon-only buttons */
+.pitara-card button,
+.formula-card button {
+  min-height: unset !important;
+}
+
+/* Better focus rings */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}
+
+/* Prevent inputs from zooming on iOS (font-size >= 16px already set) */
+input[type="date"] {
+  min-height: 48px;
+}
+
+/* Smooth scrollbar for mobile momentum */
+* {
+  -webkit-tap-highlight-color: transparent;
+}

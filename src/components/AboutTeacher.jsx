@@ -5,7 +5,7 @@ export default function AboutTeacher() {
   return (
     <section id="about" style={{ margin: '1.5rem 0' }}>
       <div
-        className="clay-card"
+        className="clay-card about-teacher-card"
         style={{
           padding: '1.8rem 2.2rem',
           borderRadius: '24px',
