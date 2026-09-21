@@ -129,12 +129,12 @@ export default function MeetTeacherScreen({ onBackToHome, onBookCallClick }) {
             }}
           >
             Abhishek Vishwakarma <br />
-            <span style={{ fontStyle: 'italic', color: '#6F6F6F' }}>M.Sc. Physics Gold Medalist</span>
+            <span style={{ fontStyle: 'italic', color: '#6F6F6F' }}>Science & Foundation Educator</span>
           </h1>
 
           <p style={{ fontSize: '1.1rem', color: '#6F6F6F', lineHeight: 1.65 }}>
-            10+ years of dedicated teaching experience in CBSE Secondary Science education (Classes 9th & 10th) 
-            and middle school foundation. Official CBSE Board copy correction examiner.
+            5+ years of dedicated Science teaching experience — Classes 9th & 10th (CBSE Science) 
+            and all-subjects foundation for Classes 6th to 8th. Currently at Morning Star Senior Secondary Academy, Orai, U.P.
           </p>
         </div>
 
@@ -263,10 +263,10 @@ export default function MeetTeacherScreen({ onBackToHome, onBookCallClick }) {
                   </div>
                   <div>
                     <div style={{ fontWeight: 700, fontSize: '1rem', color: '#000000' }}>
-                      M.Sc. Physics — Gold Medalist
+                      M.A. Psychology — Post Graduate
                     </div>
                     <div style={{ fontSize: '0.88rem', color: '#6F6F6F', marginTop: '0.2rem' }}>
-                      First Rank Gold Medalist in Post Graduation Physics with specialization in modern concepts.
+                      Post graduation with specialization in Psychology.
                     </div>
                   </div>
                 </div>
@@ -291,10 +291,10 @@ export default function MeetTeacherScreen({ onBackToHome, onBookCallClick }) {
                   </div>
                   <div>
                     <div style={{ fontWeight: 700, fontSize: '1rem', color: '#000000' }}>
-                      B.Ed & Professional TET Certification
+                      B.Ed. &amp; M.Ed. — Teacher Training
                     </div>
                     <div style={{ fontSize: '0.88rem', color: '#6F6F6F', marginTop: '0.2rem' }}>
-                      Certified pedagogical training for advanced high-school teaching methods.
+                      Bachelor of Education (completed) and Master of Education (pursuing) — certified pedagogical training.
                     </div>
                   </div>
                 </div>

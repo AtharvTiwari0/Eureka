@@ -32,13 +32,16 @@ export default function AboutTeacher() {
         {/* Credentials Pill Row */}
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem' }}>
           <div style={pillStyle}>
-            <GraduationCap size={15} color="var(--primary-blue)" /> B.Sc. Electronics (Delhi University DU)
+            <Award size={15} color="var(--accent-amber)" /> M.A. Psychology
           </div>
           <div style={pillStyle}>
-            <UserCheck size={15} color="var(--accent-emerald)" /> B.Ed & TET Qualified Educator
+            <GraduationCap size={15} color="var(--primary-blue)" /> B.Sc. Electronics (Delhi University)
           </div>
           <div style={pillStyle}>
-            <Award size={15} color="var(--accent-amber)" /> CBSE Board Copy Examiner Experience
+            <UserCheck size={15} color="var(--accent-emerald)" /> B.Ed. &amp; M.Ed. • TET Qualified
+          </div>
+          <div style={pillStyle}>
+            <Award size={15} color="var(--accent-amber)" /> CBSE Board Examiner
           </div>
         </div>
       </div>
