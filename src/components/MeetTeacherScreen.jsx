@@ -163,12 +163,12 @@ export default function MeetTeacherScreen({ onBackToHome, onBookCallClick }) {
               }}
             >
               <img
-                src="/assets/abhishek_sir.jpg"
+                src="/assets/abhishek_sir_new.png"
                 alt="Abhishek Vishwakarma - Lead Educator"
                 style={{
                   width: '100%',
                   maxHeight: '520px',
-                  objectFit: 'contain',
+                  objectFit: 'cover',
                   objectPosition: 'top center',
                   background: '#F1F5F9',
                   display: 'block',
