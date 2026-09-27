@@ -11,9 +11,10 @@ import BatchesScreen from './components/BatchesScreen';
 import BookDemoScreen from './components/BookDemoScreen';
 import AskToSirScreen from './components/AskToSirScreen';
 import StudyMaterialsScreen from './components/StudyMaterialsScreen';
+import ResultScreen from './components/ResultScreen';
 
 export default function App() {
-  const [activeScreen, setActiveScreen] = useState('home'); // 'home' | 'book-demo' | 'meet-teacher' | 'batches' | 'ask-to-sir' | 'study-materials'
+  const [activeScreen, setActiveScreen] = useState('home'); // 'home' | 'book-demo' | 'meet-teacher' | 'batches' | 'ask-to-sir' | 'study-materials' | 'results'
   const [selectedBatch, setSelectedBatch] = useState('Class 10th Science Board Special');
 
   const navigateTo = (screenName, batchName = null) => {
@@ -23,6 +24,14 @@ export default function App() {
     setActiveScreen(screenName);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  if (activeScreen === 'results') {
+    return (
+      <ResultScreen
+        onBackToHome={() => navigateTo('home')}
+      />
+    );
+  }
 
   if (activeScreen === 'study-materials') {
     return (

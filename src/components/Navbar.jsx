@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ChevronDown, ArrowRight, BookOpen, GraduationCap, FileText, MessageSquare, UserCheck, X, Menu, Sparkles } from 'lucide-react';
+import { ChevronDown, ArrowRight, BookOpen, GraduationCap, FileText, MessageSquare, UserCheck, X, Menu, Sparkles, BarChart2 } from 'lucide-react';
 
 export default function Navbar({ onBookCallClick, onNavigateScreen }) {
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
@@ -241,8 +241,8 @@ export default function Navbar({ onBookCallClick, onNavigateScreen }) {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(4, 1fr)',
-              gap: '1.2rem',
+              gridTemplateColumns: 'repeat(5, 1fr)',
+              gap: '1rem',
             }}
             className="pitara-4grid"
           >
@@ -338,6 +338,30 @@ export default function Navbar({ onBookCallClick, onNavigateScreen }) {
               </div>
               <div style={pitaraActionStyle('#059669')}>
                 <span>Ask Doubt Now</span>
+                <ArrowRight size={13} />
+              </div>
+            </div>
+
+            {/* ITEM 5: SEE RESULT */}
+            <div
+              onClick={() => {
+                setMegaMenuOpen(false);
+                if (onNavigateScreen) onNavigateScreen('results');
+              }}
+              className="pitara-card"
+              style={pitaraCardStyle}
+            >
+              <div style={iconBadgeStyle('#D97706', 'rgba(217, 119, 6, 0.1)')}>
+                <BarChart2 size={22} color="#D97706" />
+              </div>
+              <div>
+                <h4 style={pitaraTitleStyle}>See Result</h4>
+                <p style={pitaraDescStyle}>
+                  Check your batch test scores by entering your roll number.
+                </p>
+              </div>
+              <div style={pitaraActionStyle('#D97706')}>
+                <span>Check Result</span>
                 <ArrowRight size={13} />
               </div>
             </div>
@@ -437,6 +461,23 @@ export default function Navbar({ onBookCallClick, onNavigateScreen }) {
             </div>
           </button>
 
+          {/* Item 5: See Result */}
+          <button
+            onClick={() => {
+              setMobileMenuOpen(false);
+              if (onNavigateScreen) onNavigateScreen('results');
+            }}
+            style={mobileLinkStyle}
+          >
+            <div style={mobileIconBoxStyle}>
+              <BarChart2 size={20} color="#000000" />
+            </div>
+            <div>
+              <div style={{ fontSize: '0.95rem', fontWeight: 700, color: '#000000' }}>See Result</div>
+              <div style={{ fontSize: '0.78rem', color: '#6F6F6F', marginTop: '0.1rem' }}>Check test scores by roll number</div>
+            </div>
+          </button>
+
           {/* Mobile Drawer CTA Button */}
           <button
             onClick={() => handleSelectBatch('Class 10th Science Board Special')}
@@ -507,10 +548,10 @@ export default function Navbar({ onBookCallClick, onNavigateScreen }) {
           .pitara-dropdown-wrapper { display: none !important; }
         }
 
-        /* Tablet: 2-col pitara grid */
+        /* Tablet: 3-col pitara grid */
         @media (max-width: 1000px) {
           .pitara-4grid {
-            grid-template-columns: repeat(2, 1fr) !important;
+            grid-template-columns: repeat(3, 1fr) !important;
           }
         }
       `}</style>
