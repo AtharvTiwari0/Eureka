@@ -72,14 +72,18 @@ const TESTS = [
         '2E03': { marks: 30, maxMarks: 50 }, // Ananya Patel
         '2E04': { marks: 25, maxMarks: 50 }, // Anshika Diwakar
         '2E05': { marks: 20, maxMarks: 50 }, // Gunjan Verma
+        '2E06': { absent: true },             // Harsh
         '2E07': { marks: 5,  maxMarks: 50 }, // Himanshi Chaurasiya
         '2E08': { marks: 14, maxMarks: 50 }, // Kavya Verma
         '2E09': { marks: 23, maxMarks: 50 }, // Priya Yadav
+        '2E10': { absent: true },             // Raunak Parihar
         '2E11': { marks: 10, maxMarks: 50 }, // Rohini Yadav
         '2E12': { marks: 30, maxMarks: 50 }, // Rohit Yadav
         '2E13': { marks: 7,  maxMarks: 50 }, // Saksham Yadav
+        '2E14': { absent: true },             // Yuvraj
         '2E15': { marks: 35, maxMarks: 50 }, // Kanha Ji Awasthi
       },
+
     },
   },
 ];
@@ -325,6 +329,39 @@ export default function ResultScreen({ onBackToHome }) {
       {view === 'result' && resultData && selectedTest && (() => {
         const { studentName, roll, marksData, cls } = resultData;
 
+        // ── Absent ──
+        if (marksData?.absent) {
+          return (
+            <main style={{ maxWidth: '440px', margin: '0 auto', padding: '2.5rem 1.25rem 5rem', animation: 'fadeInUp 0.4s cubic-bezier(0.16,1,0.3,1)' }}>
+              <div style={{ background: '#FFF', borderRadius: '24px', border: '1.5px solid #FCA5A520', boxShadow: '0 12px 40px #DC262614, 0 2px 10px rgba(0,0,0,0.06)', overflow: 'hidden' }}>
+                <div style={{ height: '5px', background: 'linear-gradient(90deg, #DC2626, #FCA5A5)' }} />
+                <div style={{ padding: '1.8rem 1.6rem 1.6rem', textAlign: 'center' }}>
+                  {/* Avatar */}
+                  <div style={{ width: 60, height: 60, borderRadius: '50%', background: '#FEF2F2', border: '2px solid #FCA5A5', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.4rem', fontWeight: 900, color: '#DC2626', margin: '0 auto 1rem' }}>
+                    {studentName.charAt(0)}
+                  </div>
+                  <div style={{ fontWeight: 800, fontSize: '1.1rem', color: '#000', marginBottom: '0.2rem' }}>{studentName}</div>
+                  <div style={{ fontSize: '0.78rem', color: '#9CA3AF', marginBottom: '1.5rem' }}>
+                    Roll: <strong style={{ color: '#6B7280' }}>{roll}</strong> &nbsp;·&nbsp; Class {cls}
+                  </div>
+                  {/* Absent badge */}
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.6rem 1.4rem', borderRadius: '9999px', background: '#FEF2F2', border: '1.5px solid #FCA5A5', color: '#DC2626', fontWeight: 900, fontSize: '1rem', marginBottom: '1rem' }}>
+                    <span style={{ fontSize: '1.2rem' }}>❌</span> Absent
+                  </div>
+                  <div style={{ fontSize: '0.85rem', color: '#6B7280', marginBottom: '1.5rem', lineHeight: 1.5 }}>
+                    {studentName} was <strong style={{ color: '#DC2626' }}>absent</strong> for this test.
+                  </div>
+                  <button onClick={() => { setView('search'); setResultData(null); setRollInput(''); setSelectedClass(''); }}
+                    style={{ width: '100%', padding: '0.85rem', borderRadius: '12px', background: '#F8FAFC', border: '1.5px solid #E5E7EB', color: '#374151', fontWeight: 700, fontSize: '0.9rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
+                    <RotateCcw size={15} /> Search Another Roll No.
+                  </button>
+                </div>
+              </div>
+            </main>
+          );
+        }
+
+        // ── Not published ──
         if (!marksData) {
           return (
             <main style={{ maxWidth: '480px', margin: '0 auto', padding: '2.5rem 1.25rem 5rem' }}>
@@ -339,6 +376,7 @@ export default function ResultScreen({ onBackToHome }) {
             </main>
           );
         }
+
 
         const { marks, maxMarks } = marksData;
         const g = getGrade(marks, maxMarks);
