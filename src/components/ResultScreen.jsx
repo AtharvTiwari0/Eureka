@@ -18,6 +18,7 @@ const STUDENTS = {
     '2E12': 'Rohit Yadav',
     '2E13': 'Saksham Yadav',
     '2E14': 'Yuvraj',
+    '2E15': 'Kanha Ji Awasthi',
   },
   '9th': {
     '3E01': 'Anuj Tripathi',
@@ -66,7 +67,18 @@ const TESTS = [
         '3E11': { marks: 16, maxMarks: 30 }, // Vaibhav Verma
       },
       '10th': {
-        // Results will be added after 10th test
+        '2E01': { marks: 15, maxMarks: 50 }, // Akanksha Chauhan
+        '2E02': { marks: 11, maxMarks: 50 }, // Akshat Rajput
+        '2E03': { marks: 30, maxMarks: 50 }, // Ananya Patel
+        '2E04': { marks: 25, maxMarks: 50 }, // Anshika Diwakar
+        '2E05': { marks: 20, maxMarks: 50 }, // Gunjan Verma
+        '2E07': { marks: 5,  maxMarks: 50 }, // Himanshi Chaurasiya
+        '2E08': { marks: 14, maxMarks: 50 }, // Kavya Verma
+        '2E09': { marks: 23, maxMarks: 50 }, // Priya Yadav
+        '2E11': { marks: 10, maxMarks: 50 }, // Rohini Yadav
+        '2E12': { marks: 30, maxMarks: 50 }, // Rohit Yadav
+        '2E13': { marks: 7,  maxMarks: 50 }, // Saksham Yadav
+        '2E15': { marks: 35, maxMarks: 50 }, // Kanha Ji Awasthi
       },
     },
   },
