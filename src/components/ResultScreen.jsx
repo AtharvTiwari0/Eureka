@@ -19,6 +19,9 @@ const STUDENTS = {
     '2E13': 'Saksham Yadav',
     '2E14': 'Yuvraj',
     '2E15': 'Kanha Ji Awasthi',
+    '2E16': 'Ansh Chauhan',
+    '2E17': 'Aman Kushwaha',
+    '2E18': 'Prajjwal Pathak',
   },
   '9th': {
     '3E01': 'Anuj Tripathi',
@@ -109,16 +112,33 @@ const TESTS = [
     id: '10th-test-2',
     title: 'Class 10th — Test 2',
     subtitle: 'Unit Test',
-    date: 'Coming Soon',
+    date: '5 Oct 2026',
     subject: 'Science (PCB)',
     badge: 'Test 2',
     badgeColor: '#059669',
     badgeBg: '#ECFDF5',
-    status: 'coming-soon',
+    status: 'live',
     classes: ['10th'],
     results: {
       '10th': {
-        // Numbers will be added after the test
+        '2E01': { marks: 23, maxMarks: 48 }, // Akanksha Chauhan
+        '2E02': { marks: 15, maxMarks: 48 }, // Akshat Rajput
+        '2E03': { marks: 32, maxMarks: 48 }, // Ananya Patel
+        '2E04': { marks: 22, maxMarks: 48 }, // Anshika Diwakar
+        '2E05': { marks: 24, maxMarks: 48 }, // Gunjan Verma
+        '2E06': { absent: true },             // Harsh
+        '2E07': { marks: 3,  maxMarks: 48 }, // Himanshi Chaurasiya
+        '2E08': { marks: 20, maxMarks: 48 }, // Kavya Verma
+        '2E09': { marks: 28, maxMarks: 48 }, // Priya Yadav
+        '2E10': { absent: true },             // Raunak Parihar
+        '2E11': { marks: 24, maxMarks: 48 }, // Rohini Yadav
+        '2E12': { marks: 24, maxMarks: 48 }, // Rohit Yadav
+        '2E13': { marks: 20, maxMarks: 48 }, // Saksham Yadav
+        '2E14': { absent: true },             // Yuvraj
+        '2E15': { absent: true },             // Kanha Ji Awasthi
+        '2E16': { marks: 13, maxMarks: 48 }, // Ansh Chauhan
+        '2E17': { marks: 10, maxMarks: 48 }, // Aman Kushwaha
+        '2E18': { marks: 2,  maxMarks: 48 }, // Prajjwal Pathak
       },
     },
   },
