@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ScienceFormulaDecoder from './components/ScienceFormulaDecoder';
@@ -12,10 +12,56 @@ import BookDemoScreen from './components/BookDemoScreen';
 import AskToSirScreen from './components/AskToSirScreen';
 import StudyMaterialsScreen from './components/StudyMaterialsScreen';
 import ResultScreen from './components/ResultScreen';
+import AdminPanel from './components/AdminPanel';
+
+function checkAdminRoute() {
+  if (typeof window === 'undefined') return false;
+  const path = window.location.pathname.toLowerCase();
+  const hash = window.location.hash.toLowerCase();
+  const search = window.location.search.toLowerCase();
+  return (
+    path.endsWith('/admin') ||
+    path.endsWith('/admin/') ||
+    hash === '#/admin' ||
+    hash === '#admin' ||
+    search === '?admin' ||
+    search.startsWith('?admin=') ||
+    search.includes('&admin')
+  );
+}
 
 export default function App() {
+  const [isAdmin, setIsAdmin] = useState(checkAdminRoute);
   const [activeScreen, setActiveScreen] = useState('home'); // 'home' | 'book-demo' | 'meet-teacher' | 'batches' | 'ask-to-sir' | 'study-materials' | 'results'
   const [selectedBatch, setSelectedBatch] = useState('Class 10th Science Board Special');
+
+  useEffect(() => {
+    const onLocationChange = () => {
+      setIsAdmin(checkAdminRoute());
+    };
+    window.addEventListener('popstate', onLocationChange);
+    window.addEventListener('hashchange', onLocationChange);
+    return () => {
+      window.removeEventListener('popstate', onLocationChange);
+      window.removeEventListener('hashchange', onLocationChange);
+    };
+  }, []);
+
+  const handleExitAdmin = () => {
+    if (window.location.hash.toLowerCase().includes('admin')) {
+      window.location.hash = '';
+    } else if (window.location.search.toLowerCase().includes('admin')) {
+      window.history.pushState({}, '', window.location.pathname);
+    } else {
+      const cleanPath = window.location.pathname.replace(/\/admin\/?$/i, '') || '/';
+      window.history.pushState({}, '', cleanPath);
+    }
+    setIsAdmin(false);
+  };
+
+  if (isAdmin) {
+    return <AdminPanel onBackToSite={handleExitAdmin} />;
+  }
 
   const navigateTo = (screenName, batchName = null) => {
     if (batchName) {

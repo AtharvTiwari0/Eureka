@@ -1,149 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowLeft, Trophy, BookOpen, Calendar, Hash, Search, AlertCircle, ChevronRight, CheckCircle2, RotateCcw } from 'lucide-react';
-
-// ─── STUDENT DATA ─────────────────────────────────────────────
-const STUDENTS = {
-  '10th': {
-    '2E01': 'Akanksha Chauhan',
-    '2E02': 'Akshat Rajput',
-    '2E03': 'Ananya Patel',
-    '2E04': 'Anshika Diwakar',
-    '2E05': 'Gunjan Verma',
-    '2E06': 'Harsh',
-    '2E07': 'Himanshi Chaurasiya',
-    '2E08': 'Kavya Verma',
-    '2E09': 'Priya Yadav',
-    '2E10': 'Raunak Parihar',
-    '2E11': 'Rohini Yadav',
-    '2E12': 'Rohit Yadav',
-    '2E13': 'Saksham Yadav',
-    '2E14': 'Yuvraj',
-    '2E15': 'Kanha Ji Awasthi',
-    '2E16': 'Ansh Chauhan',
-    '2E17': 'Aman Kushwaha',
-    '2E18': 'Prajjwal Pathak',
-  },
-  '9th': {
-    '3E01': 'Anuj Tripathi',
-    '3E02': 'Arun Rajpoot',
-    '3E03': 'Atharv',
-    '3E04': 'Gaurav',
-    '3E05': 'Harsh Sengar',
-    '3E06': 'Hitendra',
-    '3E07': 'Naman Patel',
-    '3E08': 'Om Parihar',
-    '3E09': 'Sameer Mansoori',
-    '3E10': 'Subh Nigam',
-    '3E11': 'Vaibhav Verma',
-  },
-};
-
-// ─── TEST DATA ────────────────────────────────────────────────
-// status: 'coming-soon' → results not published yet
-// status: 'live'        → results available
-// Each result: { marks: XX, maxMarks: XX }  or  { absent: true }
-// ─────────────────────────────────────────────────────────────
-const TESTS = [
-
-  // ── 9th Test 1 ─────────────────────────────────────────────
-  {
-    id: '9th-test-1',
-    title: 'Class 9th — Test 1',
-    subtitle: 'Sunday Special Assessment',
-    date: '27 Sep 2026',
-    subject: 'Science (PCB)',
-    badge: 'Test 1',
-    badgeColor: '#7C3AED',
-    badgeBg: '#F5F3FF',
-    status: 'live',
-    classes: ['9th'],
-    results: {
-      '9th': {
-        '3E01': { marks: 23, maxMarks: 40 }, // Anuj Tripathi
-        '3E02': { marks: 7,  maxMarks: 20 }, // Arun Rajpoot
-        '3E03': { marks: 47, maxMarks: 60 }, // Atharv
-        '3E04': { marks: 65, maxMarks: 70 }, // Gaurav
-        '3E05': { marks: 45, maxMarks: 60 }, // Harsh Sengar
-        '3E06': { marks: 10, maxMarks: 20 }, // Hitendra
-        '3E07': { marks: 35, maxMarks: 50 }, // Naman Patel
-        '3E08': { marks: 20, maxMarks: 40 }, // Om Parihar
-        '3E09': { marks: 6,  maxMarks: 20 }, // Sameer Mansoori
-        '3E10': { marks: 50, maxMarks: 60 }, // Subh Nigam
-        '3E11': { marks: 16, maxMarks: 30 }, // Vaibhav Verma
-      },
-    },
-  },
-
-  // ── 10th Test 1 ────────────────────────────────────────────
-  {
-    id: '10th-test-1',
-    title: 'Class 10th — Test 1',
-    subtitle: 'Sunday Special Assessment',
-    date: '27 Sep 2026',
-    subject: 'Science (PCB)',
-    badge: 'Test 1',
-    badgeColor: '#0284C7',
-    badgeBg: '#EFF6FF',
-    status: 'live',
-    classes: ['10th'],
-    results: {
-      '10th': {
-        '2E01': { marks: 15, maxMarks: 39 }, // Akanksha Chauhan
-        '2E02': { marks: 11, maxMarks: 39 }, // Akshat Rajput
-        '2E03': { marks: 30, maxMarks: 39 }, // Ananya Patel
-        '2E04': { marks: 25, maxMarks: 39 }, // Anshika Diwakar
-        '2E05': { marks: 20, maxMarks: 39 }, // Gunjan Verma
-        '2E06': { absent: true },             // Harsh
-        '2E07': { marks: 5,  maxMarks: 39 }, // Himanshi Chaurasiya
-        '2E08': { marks: 14, maxMarks: 39 }, // Kavya Verma
-        '2E09': { marks: 23, maxMarks: 39 }, // Priya Yadav
-        '2E10': { absent: true },             // Raunak Parihar
-        '2E11': { marks: 10, maxMarks: 39 }, // Rohini Yadav
-        '2E12': { marks: 30, maxMarks: 39 }, // Rohit Yadav
-        '2E13': { marks: 7,  maxMarks: 39 }, // Saksham Yadav
-        '2E14': { absent: true },             // Yuvraj
-        '2E15': { marks: 35, maxMarks: 39 }, // Kanha Ji Awasthi
-      },
-    },
-  },
-
-  // ── 10th Test 2 ────────────────────────────────────────────
-  {
-    id: '10th-test-2',
-    title: 'Class 10th — Test 2',
-    subtitle: 'Unit Test',
-    date: '5 Oct 2026',
-    subject: 'Science (PCB)',
-    badge: 'Test 2',
-    badgeColor: '#059669',
-    badgeBg: '#ECFDF5',
-    status: 'live',
-    classes: ['10th'],
-    results: {
-      '10th': {
-        '2E01': { marks: 23, maxMarks: 48 }, // Akanksha Chauhan
-        '2E02': { marks: 15, maxMarks: 48 }, // Akshat Rajput
-        '2E03': { marks: 32, maxMarks: 48 }, // Ananya Patel
-        '2E04': { marks: 22, maxMarks: 48 }, // Anshika Diwakar
-        '2E05': { marks: 24, maxMarks: 48 }, // Gunjan Verma
-        '2E06': { absent: true },             // Harsh
-        '2E07': { marks: 3,  maxMarks: 48 }, // Himanshi Chaurasiya
-        '2E08': { marks: 20, maxMarks: 48 }, // Kavya Verma
-        '2E09': { marks: 28, maxMarks: 48 }, // Priya Yadav
-        '2E10': { absent: true },             // Raunak Parihar
-        '2E11': { marks: 24, maxMarks: 48 }, // Rohini Yadav
-        '2E12': { marks: 24, maxMarks: 48 }, // Rohit Yadav
-        '2E13': { marks: 20, maxMarks: 48 }, // Saksham Yadav
-        '2E14': { absent: true },             // Yuvraj
-        '2E15': { absent: true },             // Kanha Ji Awasthi
-        '2E16': { marks: 13, maxMarks: 48 }, // Ansh Chauhan
-        '2E17': { marks: 10, maxMarks: 48 }, // Aman Kushwaha
-        '2E18': { marks: 2,  maxMarks: 48 }, // Prajjwal Pathak
-      },
-    },
-  },
-
-];
+import { getData } from '../adminData';
 
 
 // ─── GRADE HELPER ─────────────────────────────────────────────
@@ -189,6 +46,15 @@ function Header({ onBack, backLabel, onHome }) {
 
 // ─── MAIN COMPONENT ───────────────────────────────────────────
 export default function ResultScreen({ onBackToHome }) {
+  const [data, setData] = useState(() => getData());
+
+  useEffect(() => {
+    setData(getData());
+  }, []);
+
+  const STUDENTS = data.students || {};
+  const TESTS = data.tests || [];
+
   // view: 'tests' | 'search' | 'result'
   const [view, setView] = useState('tests');
   const [selectedTest, setSelectedTest] = useState(null);
