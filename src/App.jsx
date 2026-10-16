@@ -19,14 +19,16 @@ function checkAdminRoute() {
   const path = window.location.pathname.toLowerCase();
   const hash = window.location.hash.toLowerCase();
   const search = window.location.search.toLowerCase();
+  const href = window.location.href.toLowerCase();
   return (
-    path.endsWith('/admin') ||
-    path.endsWith('/admin/') ||
-    hash === '#/admin' ||
-    hash === '#admin' ||
-    search === '?admin' ||
-    search.startsWith('?admin=') ||
-    search.includes('&admin')
+    path.includes('admin') ||
+    path.includes('adin') ||
+    hash.includes('admin') ||
+    hash.includes('adin') ||
+    search.includes('admin') ||
+    search.includes('adin') ||
+    href.includes('admin') ||
+    href.includes('adin')
   );
 }
 
@@ -131,6 +133,7 @@ export default function App() {
       <Navbar
         onBookCallClick={(batch) => navigateTo('book-demo', batch)}
         onNavigateScreen={(screen) => navigateTo(screen)}
+        onOpenAdmin={() => setIsAdmin(true)}
       />
 
       {/* MULTI-BACKGROUND SCROLL SECTIONS */}

@@ -1,11 +1,27 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ChevronDown, ArrowRight, BookOpen, GraduationCap, FileText, MessageSquare, UserCheck, X, Menu, Sparkles, BarChart2 } from 'lucide-react';
 
-export default function Navbar({ onBookCallClick, onNavigateScreen }) {
+export default function Navbar({ onBookCallClick, onNavigateScreen, onOpenAdmin }) {
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navRef = useRef(null);
+  const logoClicksRef = useRef({ count: 0, timer: null });
+
+  const handleLogoClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    logoClicksRef.current.count += 1;
+    if (logoClicksRef.current.timer) clearTimeout(logoClicksRef.current.timer);
+
+    if (logoClicksRef.current.count >= 3) {
+      logoClicksRef.current.count = 0;
+      if (onOpenAdmin) onOpenAdmin();
+    } else {
+      logoClicksRef.current.timer = setTimeout(() => {
+        logoClicksRef.current.count = 0;
+      }, 1500);
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -76,7 +92,7 @@ export default function Navbar({ onBookCallClick, onNavigateScreen }) {
       >
         {/* Left: Brand Logo */}
         <div
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          onClick={handleLogoClick}
           className="navbar-brand-logo"
           style={{ display: 'flex', alignItems: 'center', gap: '0.2rem', cursor: 'pointer', height: '42px' }}
         >
