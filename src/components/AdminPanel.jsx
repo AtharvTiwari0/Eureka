@@ -11,7 +11,7 @@ import {
 } from '../adminData';
 import FeeReceiptCard from './FeeReceiptCard';
 
-const ADMIN_PASSWORD = 'eureka2026';
+const ADMIN_PASSWORD = 'Eureka@200619';
 
 function getOrdinal(n) {
   const s = ['th', 'st', 'nd', 'rd'];
