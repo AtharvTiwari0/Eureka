@@ -12,6 +12,7 @@ import BookDemoScreen from './components/BookDemoScreen';
 import AskToSirScreen from './components/AskToSirScreen';
 import StudyMaterialsScreen from './components/StudyMaterialsScreen';
 import ResultScreen from './components/ResultScreen';
+import FeesScreen from './components/FeesScreen';
 import AdminPanel from './components/AdminPanel';
 
 function checkAdminRoute() {
@@ -72,6 +73,14 @@ export default function App() {
     setActiveScreen(screenName);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  if (activeScreen === 'fees') {
+    return (
+      <FeesScreen
+        onBackToHome={() => navigateTo('home')}
+      />
+    );
+  }
 
   if (activeScreen === 'results') {
     return (

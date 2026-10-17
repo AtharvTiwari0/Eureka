@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ChevronDown, ArrowRight, BookOpen, GraduationCap, FileText, MessageSquare, UserCheck, X, Menu, Sparkles, BarChart2 } from 'lucide-react';
+import { ChevronDown, ArrowRight, BookOpen, GraduationCap, FileText, MessageSquare, UserCheck, X, Menu, Sparkles, BarChart2, Wallet } from 'lucide-react';
 
 export default function Navbar({ onBookCallClick, onNavigateScreen, onOpenAdmin }) {
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
@@ -257,8 +257,8 @@ export default function Navbar({ onBookCallClick, onNavigateScreen, onOpenAdmin 
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(5, 1fr)',
-              gap: '1rem',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
+              gap: '0.85rem',
             }}
             className="pitara-4grid"
           >
@@ -381,6 +381,30 @@ export default function Navbar({ onBookCallClick, onNavigateScreen, onOpenAdmin 
                 <ArrowRight size={13} />
               </div>
             </div>
+
+            {/* ITEM 6: FEE STATUS */}
+            <div
+              onClick={() => {
+                setMegaMenuOpen(false);
+                if (onNavigateScreen) onNavigateScreen('fees');
+              }}
+              className="pitara-card"
+              style={pitaraCardStyle}
+            >
+              <div style={iconBadgeStyle('#059669', 'rgba(5, 150, 105, 0.1)')}>
+                <Wallet size={22} color="#059669" />
+              </div>
+              <div>
+                <h4 style={pitaraTitleStyle}>Fee Status</h4>
+                <p style={pitaraDescStyle}>
+                  Check tuition fee records & payment receipts.
+                </p>
+              </div>
+              <div style={pitaraActionStyle('#059669')}>
+                <span>Check Fees</span>
+                <ArrowRight size={13} />
+              </div>
+            </div>
           </div>
         </div>
       )}
@@ -491,6 +515,23 @@ export default function Navbar({ onBookCallClick, onNavigateScreen, onOpenAdmin 
             <div>
               <div style={{ fontSize: '0.95rem', fontWeight: 700, color: '#000000' }}>See Result</div>
               <div style={{ fontSize: '0.78rem', color: '#6F6F6F', marginTop: '0.1rem' }}>Check test scores by roll number</div>
+            </div>
+          </button>
+
+          {/* Item 6: Fee Status */}
+          <button
+            onClick={() => {
+              setMobileMenuOpen(false);
+              if (onNavigateScreen) onNavigateScreen('fees');
+            }}
+            style={mobileLinkStyle}
+          >
+            <div style={mobileIconBoxStyle}>
+              <Wallet size={20} color="#000000" />
+            </div>
+            <div>
+              <div style={{ fontSize: '0.95rem', fontWeight: 700, color: '#000000' }}>Fee Status</div>
+              <div style={{ fontSize: '0.78rem', color: '#6F6F6F', marginTop: '0.1rem' }}>Check tuition fee records & receipts</div>
             </div>
           </button>
 
